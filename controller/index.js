@@ -9,3 +9,4 @@ const es6Renderer = require("epress-es6-template-engine");
 // app.use(cors());
 
 const blake = "blake";
+const ethan = "knoxville has no good sushi"
