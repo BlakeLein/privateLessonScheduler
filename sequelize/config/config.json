@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "imfrgsrt",
+    "password": "oSMRqLmQZcSo7N5p2vqJemIVajQqzpDD",
+    "database": "imfrgsrt",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "imfrgsrt",
+    "password": "oSMRqLmQZcSo7N5p2vqJemIVajQqzpDD",
+    "database": "imfrgsrt",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "imfrgsrt",
+    "password": "oSMRqLmQZcSo7N5p2vqJemIVajQqzpDD",
+    "database": "imfrgsrt",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
