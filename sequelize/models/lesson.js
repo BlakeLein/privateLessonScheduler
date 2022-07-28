@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Lesson.init({
-    instructor: DataTypes.STRING,
-    student: DataTypes.STRING,
+    instructor: DataTypes.INTEGER,
+    student: DataTypes.INTEGER,
     startTime: DataTypes.STRING,
     stopTime: DataTypes.STRING,
     cost: DataTypes.INTEGER,
