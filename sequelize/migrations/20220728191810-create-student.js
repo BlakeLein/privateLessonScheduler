@@ -24,7 +24,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       instructor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        references:{
+          model: "Instructors",
+          key: "id"
+        }
       },
       lesson: {
         type: Sequelize.STRING

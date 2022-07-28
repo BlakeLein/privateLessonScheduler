@@ -24,10 +24,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       lesson: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       students: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
