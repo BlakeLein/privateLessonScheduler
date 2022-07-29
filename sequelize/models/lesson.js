@@ -11,20 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Lesson.belongsTo(models.student,  {
+        foreignKey: "id",
+        as: "student" ,
+        onDelete: 'CASCADE'
+      });
       Lesson.belongsTo(models.Instructor, {
         foreignKey: "id",
-        as: "Instructor" ,
+        as: "instructor" ,
+        onDelete: 'CASCADE'
       });
-
-      Lesson.belongsTo(models.student,{
-        foreignKey: "id",
-        as: "Student"
-      });
+      
     }
   }
   Lesson.init({
     instructor: DataTypes.INTEGER,
     student: DataTypes.INTEGER,
+    date: DataTypes.STRING,
     startTime: DataTypes.STRING,
     stopTime: DataTypes.STRING,
     cost: DataTypes.INTEGER,

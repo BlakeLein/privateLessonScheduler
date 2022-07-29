@@ -16,6 +16,7 @@ module.exports = {
       {
         instructor: 3,
         student: 3,
+        date: null,
         startTime: "9:00",
         stopTime: "9:30",
         cost: 30,
@@ -26,6 +27,7 @@ module.exports = {
       {
         instructor: 4,
         student: 4,
+        date: null,
         startTime: "10:00",
         stopTime: "10:30",
         cost: 30,
@@ -36,6 +38,7 @@ module.exports = {
       {
         instructor: 4,
         student: null,
+        date: null,
         startTime: "11:00",
         stopTime: "11:30",
         cost: 30,

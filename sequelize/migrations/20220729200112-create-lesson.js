@@ -10,17 +10,22 @@ module.exports = {
       },
       instructor: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references:{
-          model: "Instructors",
-          key: "id"
-        }
+        model: "Instructors",
+        key:"id",
+      }
       },
       student: {
         type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         references:{
-          model: "Students",
-          key: "id"
-        }
+        model: "Students",
+        key:"id",
+      }
+      },
+      date: {
+        type: Sequelize.STRING
       },
       startTime: {
         type: Sequelize.STRING
