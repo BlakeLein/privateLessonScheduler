@@ -23,11 +23,11 @@ module.exports = {
       instrument: {
         type: Sequelize.STRING
       },
-      lesson: {
-        type: Sequelize.STRING,
-      },
       students: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
+      },
+      lesson: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
