@@ -7,19 +7,27 @@ const bcrypt = require("bcrypt");
 
 // Import Modals
 // const { Student } = require("../../sequelize/models");
-// const { Instructor } = require("../../sequelize/models");
+const { Instructor } = require("../../sequelize/models");
 
 // Middle Ware
 app.use(express.json());
 
 // Sign Up Routes
-router.get("/signup", (req, res) => {
+router.get("/", (req, res) => {
   res.render("sign-up");
 });
 
 router.post("/create-student-user", async (req, res) => {
   console.log(req.body);
   const { first, last, email, password, instrument, instructor } = req.body;
+  console.log({
+    first,
+    last,
+    email,
+    password,
+    instrument,
+    instructor,
+  });
   try {
     const salt = await bcrypt.genSalt(7);
     const hashedPassword = await bcrypt.hash(password, salt);

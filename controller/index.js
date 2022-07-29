@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.use("/", signRoutes);
+app.use("/signup", signRoutes);
 app.use("/student", studentRoutes);
 app.use("/instructor", instructorRoutes);
 

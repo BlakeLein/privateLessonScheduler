@@ -1,11 +1,11 @@
-// const firstName = document.getElementById("first");
-// const lastName = document.getElementById("last");
-// const email = document.getElementById("email");
-// const password1 = document.getElementById("password1");
-// const password2 = document.getElementById("password2");
-// const instrument = document.getElementById("instrument");
-// const instrumentOptions = document.getElementById("instrument-options");
-// const instructor = document.getElementById("instructor");
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const password1 = document.getElementById("password1");
+const password2 = document.getElementById("password2");
+const instrument = document.getElementById("instrument");
+const instrumentOptions = document.getElementById("instrument-options");
+const instructor = document.getElementById("instructor");
 const accountType = document.getElementById("account-type");
 const submitButton = document.getElementById("submit");
 const displayZone = document.getElementById("display-zone");
@@ -47,22 +47,23 @@ const populateInstrumentOptions = (array) => {
 
 populateInstrumentOptions(listOfInstruments.sort());
 
-const renderStudentInfo = () => {
-  // First Name
-  let inputItem = document.createElement("div");
-  let name = document.createElement("label");
-  name.innerText = "FirstName";
-};
-const renderInstructorInfo = () => {};
+// const renderStudentInfo = () => {
+//   // First Name
+//   let inputItem = document.createElement("div");
+//   let name = document.createElement("label");
+//   name.innerText = "FirstName";
+// };
+// const renderInstructorInfo = () => {};
 
 const sendStudentData = async () => {
+  console.log("student data");
   const data = {
     first: firstName.value,
     last: lastName.value,
     email: email.value,
-    password: password.value,
+    password: password2.value,
     instrument: instrumentOptions.value,
-    instructor: instructor.value,
+    instructor: "Mark Barton",
   };
   const dataWeAreSending = await fetch(
     "http://localhost:3000/signup/create-student-user",
@@ -78,6 +79,7 @@ const sendStudentData = async () => {
 };
 
 const sendInstructorData = async () => {
+  console.log("isntructor data");
   const data = {
     first: firstName.value,
     last: lastName.value,
@@ -86,7 +88,7 @@ const sendInstructorData = async () => {
     instrument: instrumentOptions.value,
   };
   const dataWeAreSending = await fetch(
-    "http://localhost:3000/signup/create-instuctor-user",
+    "http://localhost:3000/signup/create-instructor-user",
     {
       method: "POST",
       headers: {
