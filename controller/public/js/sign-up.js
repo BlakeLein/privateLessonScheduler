@@ -56,7 +56,6 @@ populateInstrumentOptions(listOfInstruments.sort());
 // const renderInstructorInfo = () => {};
 
 const sendStudentData = async () => {
-  console.log("student data");
   const data = {
     first: firstName.value,
     last: lastName.value,
@@ -79,7 +78,6 @@ const sendStudentData = async () => {
 };
 
 const sendInstructorData = async () => {
-  console.log("isntructor data");
   const data = {
     first: firstName.value,
     last: lastName.value,
