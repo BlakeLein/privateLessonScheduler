@@ -6,8 +6,8 @@ const es6Renderer = require("express-es6-template-engine");
 const bcrypt = require("bcrypt");
 
 // Import Modals
-// const { Student } = require("../../sequelize/models");
-const { Instructor } = require("../../sequelize/models");
+const { Students } = require("../../sequelize/models");
+const { Instructors } = require("../../sequelize/models");
 
 // Middle Ware
 app.use(express.json());
@@ -41,7 +41,7 @@ router.post("/create-student-user", async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    const createUser = await Student.create(encryptedUser);
+    const createUser = await Students.create(encryptedUser);
   } catch (error) {
     res.send(error.message);
   }
@@ -62,7 +62,7 @@ router.post("/create-instructor-user", async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    const createUser = await Instructor.create(encryptedUser);
+    const createUser = await Instructors.create(encryptedUser);
   } catch (error) {
     res.send(error.message);
   }
