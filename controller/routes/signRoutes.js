@@ -48,7 +48,6 @@ router.post("/create-student-user", async (req, res) => {
 });
 
 router.post("/create-instructor-user", async (req, res) => {
-  console.log(req.body);
   const { first, last, email, password, instrument } = req.body;
   try {
     const salt = await bcrypt.genSalt(7);
@@ -63,6 +62,7 @@ router.post("/create-instructor-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Instructors.create(encryptedUser);
+    res.send(createUser);
   } catch (error) {
     res.send(error.message);
   }
@@ -74,7 +74,6 @@ router.get("/signin", (req, res) => {
 });
 
 router.post("/signin/student-sign-in", async (req, res) => {
-  console.log(req.body);
   const { user, pass } = req.body;
   try {
     const findUser = await Student.findOne({
