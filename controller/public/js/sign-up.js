@@ -7,7 +7,7 @@ const instrument = document.getElementById("instrument");
 const instrumentOptions = document.getElementById("instrument-options");
 const instructor = document.getElementById("instructor");
 const accountType = document.getElementById("account-type");
-const submitButton = document.getElementById("submit");
+const form = document.getElementById("form");
 const displayZone = document.getElementById("display-zone");
 
 const listOfInstruments = [
@@ -56,7 +56,6 @@ populateInstrumentOptions(listOfInstruments.sort());
 // const renderInstructorInfo = () => {};
 
 const sendStudentData = async () => {
-  console.log("student data");
   const data = {
     first: firstName.value,
     last: lastName.value,
@@ -79,7 +78,6 @@ const sendStudentData = async () => {
 };
 
 const sendInstructorData = async () => {
-  console.log("isntructor data");
   const data = {
     first: firstName.value,
     last: lastName.value,
@@ -106,12 +104,16 @@ const checkPasswords = (pass1, pass2) => {
   }
 };
 
-submitButton.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
   if (checkPasswords(password1, password2) == true) {
     if (accountType.value == "Student") {
+      e.preventDefault();
       sendStudentData();
+      alert("Account successfully created!");
     } else if (accountType.value == "Instructor") {
+      e.preventDefault();
       sendInstructorData();
+      alert("Account successfully created!");
     }
   } else {
     let passwordMatchError = document.createElement("h3");

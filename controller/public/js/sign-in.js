@@ -1,7 +1,7 @@
 const username = document.getElementById("username");
 const password = document.getElementById("password");
 const accountType = document.getElementById("account-type");
-const submitButton = document.getElementById("submit");
+const form = document.getElementById("form");
 
 const sendStudentData = async () => {
   const data = {
@@ -39,10 +39,12 @@ const sendInstructorData = async () => {
   const json = await dataWeAreSending.json();
 };
 
-submitButton.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
   if (accountType.value == "Student") {
+    e.preventDefault();
     sendStudentData();
   } else if (accountType.value == "Instructor") {
+    e.preventDefault();
     sendInstructorData();
   }
 });

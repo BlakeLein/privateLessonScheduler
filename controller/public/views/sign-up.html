@@ -15,55 +15,48 @@
       </div>
       <div class="info-container">
         <div class="input-field">
-          <div class="input-item">
-            <label>Account Type</label>
-            <select id="account-type">
+<form id="form">
+            <label>Account Type
+            <select id="account-type" required>
               <option value="" disabled selected hidden>
                 Select account type
               </option>
               <option>Student</option>
               <option>Instructor</option>
             </select>
-          </div>
-          <div class="input-item">
-            <label>First Name</label>
-            <input type="text" id="first" />
-          </div>
-          <div class="input-item">
-            <label>Last Name</label>
-            <input type="text" id="last" />
-          </div>
-          <div class="input-item">
-            <label>Email Address/Username</label>
-            <input type="text" id="email" />
-          </div>
-          <div class="input-item">
-            <label>Enter your Password</label>
-            <input type="text" id="password1" />
-          </div>
-          <div class="input-item">
-            <label>Re-enter your Password</label>
-            <input type="text" id="password2" />
-          </div>
-          <div class="input-item">
-            <label>Select your Instrument</label>
-            <select id="instrument-options">
+            </label>
+            <label>First Name
+              <input type="text" id="first" required/>
+            </label>
+            <label>Last Name
+            <input type="text" id="last" required/>
+          </label>
+            <label>Email Address/Username
+            <input type="email" id="email" required/>
+          </label>
+            <label>Enter your Password
+            <input type="password" id="password1" required/>
+            </label>
+            <label>Re-enter your Password
+            <input type="password" id="password2" required/>
+            </label>
+            <label>Select your Instrument
+            <select id="instrument-options" required>
               <option value="" disabled selected hidden>
                 Select your Instrument
               </option>
               <!-- Options to be appended to page from the js file -->
             </select>
-          </div>
-          <div class="input-item">
-            <label>Select your Instructor</label>
+            </label>
+            <label>Select your Instructor
             <select id="instructor">
               <!-- Options to be appended to page from the router file -->
             </select>
-          </div>
-          <button id="submit">Sign Up</button>
+            </label>
+          <input type="submit" value="Sign Up"></input>
+          </form>
         </div>
         <div id="display-zone">
-        
         </div>
         </div>
       </div>
