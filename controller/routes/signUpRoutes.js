@@ -42,7 +42,7 @@ router.post("/create-student-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Students.create(encryptedUser);
-    res.redirect("./signin");
+    res.redirect(307, "http://localhost:3000/signin");
   } catch (error) {
     res.send(error.message);
   }
@@ -64,7 +64,7 @@ router.post("/create-instructor-user", async (req, res) => {
     };
     const createUser = await Instructors.create(encryptedUser);
 
-    res.redirect("http://localhost:3000/signin");
+    res.redirect(307, "http://localhost:3000/signin");
   } catch (error) {
     res.send(error.message);
   }

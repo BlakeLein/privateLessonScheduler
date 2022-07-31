@@ -38,6 +38,7 @@ router.post("/create-lesson", async (req, res) => {
       updatedAt: new Date(),
     };
     const createLesson = await Lessons.create(newLesson);
+    res.send(alert("Lesson Created!"));
   } catch (error) {
     res.send(error.message);
   }
