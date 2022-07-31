@@ -12,6 +12,23 @@ const { Instructors } = require("../../sequelize/models");
 // Middle Ware
 app.use(express.json());
 
+const checkLogin = async (req, res, next) => {
+  console.log(req.session.user);
+  const sessionValid = await Sessions.findOne({
+    where: {
+      sid: req.session.id,
+    },
+  });
+
+  if (sessionValid) {
+    next();
+  } else {
+    res.json({
+      message: "Login Failed",
+    });
+  }
+};
+
 // Sign Up Routes
 router.get("/", (req, res) => {
   res.render("sign-up");
