@@ -9,10 +9,10 @@ const PORT = 3000;
 //cookie/session stuff -need double check download packages!
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const store = new SequelizeStore({
-  db: models.sequelize,
-});
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
+// const store = new SequelizeStore({
+//   db: models.sequelize,
+// });
 
 // Route Imports
 
@@ -25,20 +25,20 @@ const instructorRoutes = require("./routes/instructorRoutes");
 app.use(express.json());
 app.use(cors());
 
-app.use(cookieParser());
-app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true,
-    store: store,
-    cookie: {
-      secure:false,
-      maxAge: 2592000000,
-    },
-  })
-);
-store.sync();
+// app.use(cookieParser());
+// app.use(
+//   session({
+//     secret: "secret",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: store,
+//     cookie: {
+//       secure:false,
+//       maxAge: 2592000000,
+//     },
+//   })
+// );
+// store.sync();
 
 // Template Engine
 app.use(express.static("public"));
