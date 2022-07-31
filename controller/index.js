@@ -8,7 +8,8 @@ const PORT = 3000;
 
 // Route Imports
 
-const signRoutes = require("./routes/signRoutes");
+const signUpRoutes = require("./routes/signUpRoutes");
+const signInRoutes = require("./routes/signInRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const instructorRoutes = require("./routes/instructorRoutes");
 
@@ -27,7 +28,8 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.use("/signup", signRoutes);
+app.use("/signup", signUpRoutes);
+app.use("/signin", signInRoutes);
 app.use("/student", studentRoutes);
 app.use("/instructor", instructorRoutes);
 
