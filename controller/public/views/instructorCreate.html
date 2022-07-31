@@ -14,15 +14,25 @@
         <h1>Create a new lesson</h1>
       </div>
       <div>
-        <label for="date">Date</label>
-        <input type="date" id="date" />
-        <label for="start-time">Start Time</label>
-        <input type="time" id="start-time" />
-        <label for="stop-time">Stop Time</label>
-        <input type="time" id="stop-time" />
-        <label for="cost">Lesson Cost</label>
-        <input type="number" id="cost" />
-        <button id="submit">Create New Lesson</button>
+        <form id="form">
+          <label for="date"
+            >Date
+            <input type="date" id="date" required />
+          </label>
+          <label for="start-time"
+            >Start Time
+            <input type="time" id="start-time" required />
+          </label>
+          <label for="stop-time"
+            >Stop Time
+            <input type="time" id="stop-time" required />
+          </label>
+          <label for="cost"
+            >Lesson Cost
+            <input type="number" id="cost" min="1" required />
+          </label>
+          <input type="submit" value="Create a New Lesson"></input>
+        </form>
       </div>
     </div>
   </body>

@@ -3,6 +3,7 @@ const startTime = document.getElementById("start-time");
 const stopTime = document.getElementById("stop-time");
 const cost = document.getElementById("cost");
 const submitButton = document.getElementById("submit");
+const form = document.getElementById("form");
 
 const createNewLesson = async () => {
   const data = {
@@ -25,7 +26,7 @@ const createNewLesson = async () => {
   const json = await dataWeAreSending.json();
 };
 
-submitButton.addEventListener("click", () => {
-  console.log("Hi");
+form.addEventListener("submit", (e) => {
+  e.preventDefault;
   createNewLesson();
 });
