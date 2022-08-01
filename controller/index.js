@@ -32,14 +32,14 @@ app.use(
     secret: "secret",
     resave: false,
     saveUninitialized: true,
-    // store: store,
+    store: store,
     cookie: {
       secure:false,
       maxAge: 2592000000,
     },
   })
 );
-
+store.sync()
 
 // store.sync();
 
