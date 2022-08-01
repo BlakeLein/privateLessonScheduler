@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: solid 1px black; */
+  border: solid 1px black;
   height: 100%;
 }
 
@@ -17,7 +17,55 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: solid 1px red; */
+  border: solid 1px red;
+}
+
+.account-type {
+  border: solid 1px blue;
+}
+.modal {
+  position: fixed;
+  margin-left: 20%;
+  margin-right: 20%;
+  bottom: 20%;
+  top: 20%;
+  border: solid 1px black;
+  border-radius: 10px;
+  transform: scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+  background-color: white;
+}
+
+.modal-header {
+  border: solid 1px yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.modal-close {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-form {
+  width: 100%;
+  border: solid 1px green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  border: solid 1px green;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .login-buttons {
@@ -35,4 +83,27 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.active {
+  transform: scale(1);
+}
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.inactive {
+  transform: scale(0);
 }
