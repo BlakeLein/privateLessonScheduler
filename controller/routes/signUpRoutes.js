@@ -13,8 +13,49 @@ const { Instructors } = require("../../sequelize/models");
 app.use(express.json());
 
 // Sign Up Routes
-router.get("/student", (req, res) => {
-  res.render("student-sign-up");
+router.get("/student", async (req, res) => {
+  const listOfInstruments = [
+    "Piccolo",
+    "Flute",
+    "Oboe",
+    "Bassoon",
+    "Clarinet",
+    "Bass Clarinet",
+    "Alto Saxophone",
+    "Tenor Saxophone",
+    "Bari Saxophone",
+    "Trumpet",
+    "French Horn",
+    "Trombone",
+    "Bass Trombone",
+    "Euphonium",
+    "Tuba",
+    "Percussion",
+    "Violin",
+    "Viola",
+    "Cello",
+    "Double Bass",
+    "Vocal - Soprano",
+    "Vocal - Alto",
+    "Vocal - Tenor",
+    "Vocal - Bass",
+  ];
+  const sortedInstruments = listOfInstruments.sort();
+  let listOfInstructors = [];
+  // Find all instructors by name
+  let getInstructors = await Instructors.findAll({
+    attributes: ["firstName", "lastName"],
+  });
+  // Loop through database and add each instructor to a list
+  for (let i = 0; i < getInstructors.length; i++) {
+    listOfInstructors.push(getInstructors[i]);
+  }
+  res.render("student-sign-up", {
+    locals: {
+      listOfInstructors,
+      sortedInstruments,
+    },
+  });
 });
 
 router.get("/instructor", (req, res) => {
@@ -46,7 +87,7 @@ router.post("/create-student-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Students.create(encryptedUser);
-    // res.redirect(307, "http://localhost:3000/signin");
+    res.redirect("/signin");
   } catch (error) {
     res.send(error.message);
   }
