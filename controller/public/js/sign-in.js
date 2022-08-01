@@ -18,7 +18,9 @@ const sendStudentData = async () => {
       body: JSON.stringify(data),
     }
   );
-  const json = await dataWeAreSending.json();
+  if (dataWeAreSending.status === 200) {
+    window.location.href = "/student/home";
+  }
 };
 
 const sendInstructorData = async () => {
@@ -36,7 +38,9 @@ const sendInstructorData = async () => {
       body: JSON.stringify(data),
     }
   );
-  const json = await dataWeAreSending.json();
+  if (dataWeAreSending.status === 200) {
+    window.location.href = "/instructor/home";
+  }
 };
 
 form.addEventListener("submit", (e) => {

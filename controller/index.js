@@ -34,12 +34,12 @@ app.use(
     saveUninitialized: true,
     store: store,
     cookie: {
-      secure:false,
+      secure: false,
       maxAge: 2592000000,
     },
   })
 );
-store.sync()
+
 
 // store.sync();
 

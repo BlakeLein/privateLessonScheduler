@@ -11,17 +11,6 @@ const overlay = document.getElementById("overlay");
 const closeModalButton = document.getElementById("modal-close");
 const createLessonButton = document.getElementById("create-lesson");
 
-// Allows the modal to close and overlay to disable when you click outside
-overlay.addEventListener("click", () => {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
-// Closes the modal after it's opened
-closeModalButton.addEventListener("click", () => {
-  closeModal();
-});
-
 // Functions to open/close modal
 const openModal = () => {
   // if (modal == null) return;
@@ -33,6 +22,16 @@ const closeModal = () => {
   modal.classList.remove("active");
   overlay.classList.remove("active");
 };
+// Allows the modal to close and overlay to disable when you click outside
+overlay.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Closes the modal after it's opened
+closeModalButton.addEventListener("click", () => {
+  closeModal();
+});
 
 createLessonButton.addEventListener("click", () => {
   openModal();
