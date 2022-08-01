@@ -11,19 +11,35 @@ const { Instructors } = require("../../sequelize/models");
 // Middle Ware
 app.use(express.json());
 
-router.get("/home", (req, res) => {
-  res.render("instructorView");
+// Check for sessions and account type
+const checkStudentLogin = (req, res, next) => {
+  console.log(req.session);
+  if (req.session.user.instructor) {
+    next();
+  } else {
+    res.json({
+      message: "Login Required",
+    });
+    res.render("/signin");
+  }
+};
+const checkTeacherLogin = (req, res, next) => {
+  console.log(req.session);
+  if (req.session.user) {
+    next();
+  } else {
+    res.json({
+      message: "Login Required",
+    });
+    res.render("/signin");
+  }
+};
+
+router.get("/home", checkTeacherLogin, (req, res) => {
+  res.render("instructorHome");
 });
 
-router.get("/create", (req, res) => {
-  res.render("instructorCreate");
-});
-
-router.get("/studio", (req, res) => {
-  res.render("instructorStudio");
-});
-
-router.post("/create-lesson", async (req, res) => {
+router.post("/create-lesson", checkTeacherLogin, async (req, res) => {
   console.log(req.body);
   const { date, start, stop, cost } = req.body;
   try {
