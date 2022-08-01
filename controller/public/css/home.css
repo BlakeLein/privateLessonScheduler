@@ -88,6 +88,12 @@ button{
     cursor: pointer;
     transition: width 0.8s;
 }
+.signIn{
+    text-decoration: none;
+    color: whitesmoke;
+    size: 5rem;
+    font-weight: 400;
+}
 
 button img{
     width: 30px;
