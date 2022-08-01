@@ -32,7 +32,7 @@ app.use(
     secret: "secret",
     resave: false,
     saveUninitialized: true,
-    // store: store,
+    store: store,
     cookie: {
       secure: false,
       maxAge: 2592000000,
@@ -50,7 +50,7 @@ app.set("view engine", "html");
 
 // Routes
 // Check login and redirect to student or teacher home page
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.render("home");
 });
 
