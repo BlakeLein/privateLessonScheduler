@@ -13,8 +13,12 @@ const { Instructors } = require("../../sequelize/models");
 app.use(express.json());
 
 // Sign Up Routes
-router.get("/", (req, res) => {
-  res.render("sign-up");
+router.get("/student", (req, res) => {
+  res.render("student-sign-up");
+});
+
+router.get("/instructor", (req, res) => {
+  res.render("instructor-sign-up");
 });
 
 router.post("/create-student-user", async (req, res) => {
