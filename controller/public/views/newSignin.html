@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+</head>
+<body>
+    <div class="wrapper-login">
+        <div class="container">
+            <div class="signIn-col-left">
+                <div class="login-text">
+                    <h2>Welcome Back</h2>
+                    <p>Create a <a href="../signup/student">student</a> or <a href="../signup/instructor">instructor</a> account.</p>
+                </div>
+            </div>
+            <div class="signIn-col-right">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <form action="">
+                        <label>Acount Type
+                            <select id="account-type" required>
+                            <option value="" disabled selected hidden>
+                            Select account type
+                            </option>
+                            <option>Student</option>
+                            <option>Instructor</option>
+                        </select>
+                        </label>
+                        <label
+                        >Username / Email
+                        <input type="email" id="username" required />
+                        </label>
+                        <label
+                        >Password
+                        <input type="password" id="password" required />
+                        </label>
+                        <input type="submit" value="Log in"></input>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
