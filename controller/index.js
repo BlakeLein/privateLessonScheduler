@@ -40,8 +40,7 @@ app.use(
   })
 );
 
-
-// store.sync();
+store.sync();
 
 // Template Engine
 app.use(express.static("public"));
