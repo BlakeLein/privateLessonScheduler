@@ -1,8 +1,14 @@
 body {
   padding: 0;
   margin: 0;
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
+}
+.navbar{
+  padding-left: 8%;
+  padding-right: 8%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .main-container {

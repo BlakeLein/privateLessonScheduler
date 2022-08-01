@@ -5,6 +5,7 @@
 }
 body{
     background-color: #E5DADA;
+    width: 100vw;
 }
 .container{
     width:100%;
@@ -19,9 +20,29 @@ body{
     display: flex;
     align-items: center;
 }
+.navbar h2{
+    padding: 10px;
+    padding-top: 25px;
+}
+.navbar a{
+    font-size: large;
+    font-weight: 600;
+}
+.navbar ul li::after{
+content: '';
+width: 0%;
+height: 2px;
+background: #840032;
+display: block;
+margin: auto;
+transition: 0.5s;
+}
+.navbar ul li:hover::after{
+width: 100%;
+}
 .logo{
-    height: 50px;
-    width: 50px;
+    height: 80px;
+    width: 80px;
     cursor: pointer;
     margin:30px 0;
 }
@@ -87,6 +108,12 @@ button{
     border-radius: 6px;
     cursor: pointer;
     transition: width 0.8s;
+}
+.signIn{
+    text-decoration: none;
+    color: whitesmoke;
+    size: 5rem;
+    font-weight: 400;
 }
 
 button img{
