@@ -13,8 +13,12 @@ const { Instructors } = require("../../sequelize/models");
 app.use(express.json());
 
 // Sign Up Routes
-router.get("/", (req, res) => {
-  res.render("sign-up");
+router.get("/student", (req, res) => {
+  res.render("student-sign-up");
+});
+
+router.get("/instructor", (req, res) => {
+  res.render("instructor-sign-up");
 });
 
 router.post("/create-student-user", async (req, res) => {
@@ -42,7 +46,7 @@ router.post("/create-student-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Students.create(encryptedUser);
-    res.redirect(307, "http://localhost:3000/signin");
+    // res.redirect(307, "http://localhost:3000/signin");
   } catch (error) {
     res.send(error.message);
   }
@@ -64,7 +68,7 @@ router.post("/create-instructor-user", async (req, res) => {
     };
     const createUser = await Instructors.create(encryptedUser);
 
-    res.redirect(307, "http://localhost:3000/signin");
+    // res.redirect(307, "http://localhost:3000/signin");
   } catch (error) {
     res.send(error.message);
   }
