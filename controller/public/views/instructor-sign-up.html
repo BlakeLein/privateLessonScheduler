@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div>
-      <h1>On this page, teachers can view lessons that have been picked up</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructor Sign Up</title>
+  <link defer rel="stylesheet" href="../css/index.css" />
+  <script defer src="../js/instructor-sign-up.js"></script>
+</head>
+
+<body>
+  <div class=".main-container">
+    <div class="titles">
+      <h1>Instructor Sign Up</h1>
     </div>
-  </body>
+    <div class="info-container">
+  <!-- Modal for Instructor Account -->
+          <form class="modal-form" id="form">
+            <label>First Name
+              <input type="text" id="first" required />
+            </label>
+            <label>Last Name
+              <input type="text" id="last" required />
+            </label>
+            <label>Email Address/Username
+              <input type="email" id="email" required />
+            </label>
+            <label>Enter your Password
+              <input type="password" id="password1" required />
+            </label>
+            <label>Re-enter your Password
+              <input type="password" id="password2" required />
+            </label>
+            <label>Select your Instrument
+              <select id="instrument-options" required>
+                <option value="" disabled selected hidden>
+                  Select your Instrument
+                </option>
+                <!-- Options to be appended to page from the js file -->
+              </select>
+            </label>
+            <input type="submit" value="Sign Up"></input>
+        </form>
+        <div>
+          <p>Not an instructor? <a href="../signup/student">Click Here</a> to create a student account.</p>
+          <p>Already have an account? <a href="../../signin">Click Here</a> to sign in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+
 </html>

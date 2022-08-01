@@ -5,33 +5,18 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up for Musicly</title>
+  <title>Student Sign Up</title>
   <link defer rel="stylesheet" href="../css/index.css" />
-  <script defer src="../js/sign-up.js"></script>
+  <script defer src="../js/student-sign-up.js"></script>
 </head>
 
 <body>
   <div class=".main-container">
     <div class="titles">
-      <h1>Create a New Account</h1>
+      <h1>Student Sign Up</h1>
     </div>
     <div class="info-container">
-      <div class="account-type">
-        <h2>What type of account would you like to create?</h2>
-        <button id="student-account">Student</button>
-        <button id="instructor-account">Instructor</button>
-      </div>
   <!-- Modal for Instructor Account -->
-  <div class="modal" id="modal">
-        <div class="modal-header">
-          <div>
-            <h2 class="header-title" id="header-title">New Instructor Account</h2>
-          </div>
-          <div>
-            <button id="modal-close" class="modal-close">&times</button>
-          </div>
-        </div>
-        <div id="modal-body" class="modal-body">
           <form class="modal-form" id="form">
             <label>First Name
               <input type="text" id="first" required />
@@ -54,18 +39,33 @@
                   Select your Instrument
                 </option>
                 <!-- Options to be appended to page from the js file -->
+                ${sortedInstruments.map(instrument => `
+              <option>${instrument}</option>
+                `).join('')}
               </select>
             </label>
-            <label id="instructor-select-zone"></label>
+            <label>Select your Instructor
+              <select id="instrument-options" required>
+                <option value="" disabled selected hidden>
+                  Select your Instructor
+                </option>
+                <!-- Options to be appended to page from the js file -->
+                ${listOfInstructors.map(instructor => `
+              <option>${instructor.firstName} ${instructor.lastName}</option>
+                `).join('')}
+              </select>
+            </label>
             <input type="submit" value="Sign Up"></input>
-        </div>
         </form>
+        <div>
+          <p>Not an student? <a href="../signup/instructor">Click Here</a> to create an instructor account.</p>
+          <p>Already have an account? <a href="../../signin">Click Here</a> to sign in.</p>
+        </div>
       </div>
     </div>
   </div>
   </div>
   </div>
-  <div class="" id="overlay"></div>
 </body>
 
 </html>

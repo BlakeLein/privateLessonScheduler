@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a New Lesson</title>
+    <link defer rel="stylesheet" href="../css/index.css" />
+    <script defer src="../js/instructorHome.js"></script>
+  </head>
+  <body>
+    <button id="create-lesson">Create Lesson</button>
+    <div class="main-container">
+      <div class="inner-container" id="available-lessons">
+        <div class="titles">
+          <h1>Available Lessons</h1>
+        </div>
+        <div id="available-card-zone">
+          <div id="sample-card">
+            <div id="card-title">Date</div>
+            <div id="card-body">
+              <div class="card-item" id="card-start-time">Start Time</div>
+              <div id="card-stop-time">Start Time</div>
+              <div id="cost">Cost</div>
+              <button id="sign-up">Remove Lesson</button>
+            </div>
+          </div>
+          <div id="sample-card">
+            <div id="card-title">Date</div>
+            <div id="card-body">
+              <div class="card-item" id="card-start-time">Start Time</div>
+              <div id="card-stop-time">Start Time</div>
+              <div id="cost">Cost</div>
+              <button id="sign-up">Remove Lesson</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-container" id="picked-up-lessons">
+        <div class="titles">
+          <h1>Picked Up Lessons</h1>
+        </div>
+      </div>
+      <div class="modal" id="modal">
+        <div id="modal-header">
+          <div id="modal-title">Create a New Lesson
+          </div>
+          <div id="modal-close">&times
+          </div>
+        </div>
+        <div id="modal-body">
+        <form class="modal-body" id="form">
+          <label class="form-item" for="date"
+            >Date
+            <input type="date" id="date" required />
+          </label>
+          <label class="form-item" for="start-time"
+            >Start Time
+            <input type="time" id="start-time" required />
+          </label>
+          <label class="form-item" for="stop-time"
+            >Stop Time
+            <input type="time" id="stop-time" required />
+          </label>
+          <label class="form-item" for="cost"
+            >Lesson Cost
+            <input type="number" id="cost" min="1" required />
+          </label>
+          <input class="form-submit-button" type="submit" value="Create a New Lesson"></input>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="" id="overlay"></div>
+  </body>
+</html>
