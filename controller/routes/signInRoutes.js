@@ -76,13 +76,13 @@ router.post("/student-sign-in", async (req, res) => {
       res.status(400).send("That password is incorrect.");
       console.log("Wrong Password");
     } else {
-      req.session.user = studentUser;
-      // res.json({
-      //   message: "Login Success",
-      //   user: userWeFound,
-      // });
-      console.log("This should have worked");
-      res.status(200).json({ status: "success" });
+      req.session.user = userWeFound;
+      console.log(userWeFound);
+      res.json({
+        message: "Login Success",
+        user: userWeFound,
+      });
+      res.status(200);
     }
   } catch (error) {
     res.send(error);
@@ -90,40 +90,44 @@ router.post("/student-sign-in", async (req, res) => {
 });
 
 router.post("/instructor-sign-in", async (req, res) => {
-  console.log(req.session);
+  // console.log(req.session);
   const { user, pass } = req.body;
   if (!req.body.user || !req.body.pass) {
     res.status(400).send("Please provide a username and password");
     return;
   }
-  // try {
-  const studentUser = await Instructors.findOne({
-    where: {
-      email: req.body.user,
-    },
-  });
-  const userWeFound = studentUser.dataValues;
-  const validPassword = await bcrypt.compare(pass, userWeFound.password);
-  if (!validPassword) {
-    res.status(400).send("That password is incorrect.");
-    console.log("Wrong Password");
-  } else {
-    req.session.user = studentUser;
-    // res.json({
-    //   message: "Login Success",
-    //   user: userWeFound,
-    // });
-    console.log("This should have worked");
-    res.status(200).json({ status: "success" });
+  try {
+    const instructorUser = await Instructors.findOne({
+      where: {
+        email: req.body.user,
+      },
+    });
+    const userWeFound = instructorUser.dataValues;
+    const validPassword = await bcrypt.compare(pass, userWeFound.password);
+    if (!validPassword) {
+      res.status(400).send("That password is incorrect.");
+      console.log("Wrong Password");
+    } else {
+      req.session.user = instructorUser;
+      res.json({
+        message: "Login Success",
+        user: userWeFound,
+      });
+      console.log("This should have worked");
+      res.status(200);
+    }
+  } catch (error) {
+    res.send(error);
   }
-  // } catch (error) {
-  //   res.send(error);
-  // }
 });
 
 router.post("/logout", (req, res) => {
-  req.session = null;
-  res.render("home");
+  req.session.user = null;
+  console.log(req.session.user);
+  res.json({
+    message: "Logout Success",
+  });
+  console.log(res.json.message);
 });
 
 module.exports = router;

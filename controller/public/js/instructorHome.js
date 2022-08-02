@@ -11,6 +11,28 @@ const overlay = document.getElementById("overlay");
 const closeModalButton = document.getElementById("modal-close");
 const createLessonButton = document.getElementById("create-lesson");
 
+// Sign Out Functionality
+const signOutButton = document.getElementById("sign-out-btn");
+
+const logOut = async () => {
+  const fetchLogOut = await fetch("http://localhost:3000/signin/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await fetchLogOut.json();
+  if (json.message == "Logout Success") {
+    alert("Successfully Logged Out");
+    window.location.href = "/home";
+  }
+};
+
+signOutButton.addEventListener("click", async () => {
+  console.log("Hi");
+  logOut();
+});
+
 // Functions to open/close modal
 const openModal = () => {
   // if (modal == null) return;
