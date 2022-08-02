@@ -29,14 +29,18 @@ const checkStudentLogin = (req, res, next) => {
     res.send(error.message);
   }
 };
+
 const checkTeacherLogin = (req, res, next) => {
-  if (!req.session.user.instructor) {
-    next();
-  } else {
-    res.json({
-      message: "Login Required",
-    });
-    res.render("/signin");
+  try {
+    if (!req.session.user.instructor) {
+      next();
+    } else if (req.session.user.instructor) {
+      res.render("studentHome");
+    } else {
+      res.render("home");
+    }
+  } catch (error) {
+    res.render("home");
   }
 };
 

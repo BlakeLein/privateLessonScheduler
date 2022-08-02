@@ -31,24 +31,13 @@ app.use(
 store.sync();
 
 // Check for sessions and account type
-const checkStudentLogin = (req, res, next) => {
+const detectUser = (req, res, next) => {
   if (req.session.user.instructor) {
-    next();
+    res.render("studentHome");
+  } else if (req.session.user) {
+    res.render("instructorHome");
   } else {
-    res.json({
-      message: "Login Required",
-    });
-    res.render("/signin");
-  }
-};
-const checkTeacherLogin = (req, res, next) => {
-  if (req.session.user) {
     next();
-  } else {
-    res.json({
-      message: "Login Required",
-    });
-    res.render("/signin");
   }
 };
 
