@@ -9,31 +9,15 @@ app.use(express.json());
 
 // Check for sessions and account type
 const checkStudentLogin = (req, res, next) => {
-  console.log("We need to get here");
-  console.log(req.session.user.instructor);
   try {
     if (req.session.user.instructor) {
       next();
-    } else {
-      // res.json({
-      //   message: "Login Required",
-      // });
-      res.render("home");
+    } else if (req.session.user) {
+      res.render("instructorHome");
     }
   } catch (error) {
-    console.log(error.message);
-    res.send(error.message);
+    res.render("home");
   }
-  const checkTeacherLogin = (req, res, next) => {
-    if (!req.session.user.instructor) {
-      next();
-    } else {
-      res.json({
-        message: "Login Required",
-      });
-      res.render("/signin");
-    }
-  };
 };
 
 router.get("/home", checkStudentLogin, (req, res) => {
