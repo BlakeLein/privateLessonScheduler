@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In to Musicly</title>
-    <link defer rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/signIn.css">
+    <!-- <link rel="stylesheet" href="../css/home.css"> -->
     <script defer src="../js/sign-in.js"></script>
   </head>
   <body>
@@ -29,42 +29,45 @@
 
       <!-- MAIN CONTAINER -->
 
-    <div class=".main-container">
-      <div class="titles">
-        <h1>Sign In</h1>
-      </div>
-      <div class="info-container">
-        <div class="input-field">
-          
-          <form id="form">
-            <label
-              >Acount Type
-              <select id="account-type" required>
-                <option value="" disabled selected hidden>
-                  Select account type
-                </option>
-                <option>Student</option>
-                <option>Instructor</option>
-              </select>
-            </label>
-            <label
-              >Username / Email
-              <input type="email" id="username" required />
-            </label>
-            <label
-              >Password
-              <input type="password" id="password" required />
-            </label>
-            <input type="submit" value="Log in"></input>
-          </form>
-
-
-
-          <div>
-          <p>Create a <a href="../signup/student">student</a> or <a href="../signup/instructor">instructor</a> account.</p>
+      <div class="wrapper-login">
+        <div class="login-container">
+            <div class="signIn-col-left">
+                <div class="login-text">
+                    <h2>Welcome Back!</h2>
+                    <br>
+                    <h5>Need to make an account?</h5>
+                    <p>Create a <a href="../signup/student" class = "loginLink">Student</a> <br><br>or <a href="../signup/instructor" class = "loginLink">Instructor</a></p>
+                </div>
+            </div>
+            <div class="signIn-col-right">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <form id="form" action="">
+                        <label>Acount Type
+                          <br>
+                            <select id="account-type" required>
+                            <option value="" disabled selected hidden>
+                            Select account type
+                            </option>
+                            <option>Student</option>
+                            <option>Instructor</option>
+                        </select>
+                        </label>
+                        <br>
+                        <label
+                        >Username / Email
+                        <input type="email" id="username" required />
+                        <br>
+                        </label>
+                        <label
+                        >Password
+                        <input type="password" id="password" required />
+                        </label>
+                        <input type="submit" value="Log In" id="submit-btn"></input>
+                    </form>
+                </div>
+            </div>
         </div>
-        </div>
-      </div>
     </div>
-  </body>
+</body>
 </html>
