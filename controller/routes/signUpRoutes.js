@@ -65,14 +65,6 @@ router.get("/instructor", (req, res) => {
 router.post("/create-student-user", async (req, res) => {
   console.log(req.body);
   const { first, last, email, password, instrument, instructor } = req.body;
-  console.log({
-    first,
-    last,
-    email,
-    password,
-    instrument,
-    instructor,
-  });
   try {
     const salt = await bcrypt.genSalt(7);
     const hashedPassword = await bcrypt.hash(password, salt);

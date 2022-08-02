@@ -13,19 +13,24 @@ app.use(express.json());
 
 // Check for sessions and account type
 const checkStudentLogin = (req, res, next) => {
-  console.log(req.session);
-  if (req.session.user.instructor) {
-    next();
-  } else {
-    res.json({
-      message: "Login Required",
-    });
-    res.render("/signin");
+  console.log("We need to get here");
+  console.log(req.session.user.instructor);
+  try {
+    if (req.session.user.instructor) {
+      next();
+    } else {
+      // res.json({
+      //   message: "Login Required",
+      // });
+      res.render("home");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.send(error.message);
   }
 };
 const checkTeacherLogin = (req, res, next) => {
-  console.log(req.session);
-  if (req.session.user) {
+  if (!req.session.user.instructor) {
     next();
   } else {
     res.json({
@@ -44,7 +49,7 @@ router.post("/create-lesson", checkTeacherLogin, async (req, res) => {
   const { date, start, stop, cost } = req.body;
   try {
     const newLesson = {
-      instructorId: 1,
+      instructorId: req.session.user.id,
       studentId: null, // Add student later?
       date: date,
       startTime: start,

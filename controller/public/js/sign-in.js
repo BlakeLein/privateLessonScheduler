@@ -18,7 +18,8 @@ const sendStudentData = async () => {
       body: JSON.stringify(data),
     }
   );
-  if (dataWeAreSending.status === 200) {
+  const json = await dataWeAreSending.json();
+  if (json.message == "Login Success") {
     window.location.href = "/student/home";
   }
 };
@@ -38,7 +39,8 @@ const sendInstructorData = async () => {
       body: JSON.stringify(data),
     }
   );
-  if (dataWeAreSending.status === 200) {
+  const json = await dataWeAreSending.json();
+  if (json.message == "Login Success") {
     window.location.href = "/instructor/home";
   }
 };
