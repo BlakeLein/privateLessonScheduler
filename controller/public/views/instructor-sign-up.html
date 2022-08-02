@@ -6,8 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instructor Sign Up</title>
-  <link defer rel="stylesheet" href="../css/index.css" />
-  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/ISignUp.css">
   <script defer src="../js/instructor-sign-up.js"></script>
 </head>
 <body>
@@ -28,11 +27,13 @@
   </div>
 
 <!-- MAIN BODY -->
-  <div class=".main-container">
-    <div class="titles">
+<div class="wrapper-signUp">
+  <div class="title">
       <h1>Instructor Sign Up</h1>
-    </div>
-    <div class="info-container">
+  </div>
+  <div class="signUp-container">
+      <div class="signUp-col-left">
+        <div class="signUp-form">
   <!-- Modal for Instructor Account -->
           <form class="modal-form" id="form">
             <label>First Name
@@ -58,17 +59,22 @@
                 <!-- Options to be appended to page from the js file -->
               </select>
             </label>
-            <input type="submit" value="Sign Up"></input>
+            <input type="submit" value="Sign Up" id ="signUp-btn"></input>
         </form>
-        <div>
-          <p>Not an instructor? <a href="../signup/student">Click Here</a> to create a student account.</p>
-          <p>Already have an account? <a href="../../signin">Click Here</a> to sign in.</p>
-        </div>
+      </div>
+    </div>
+
+    <div class="signUp-col-right">
+      <div class =  signUp-text>
+          <h3>Not an instructor?</h3> 
+          <p><a href="../signup/student" class = signUp-link>Click Here</a> to create a student account.</p>
+          <br>
+          <h3>Already have an account?</h3> 
+          <p><a href="../../signin" class = signUp-link>Click Here</a> to sign in.</p>
       </div>
     </div>
   </div>
-  </div>
-  </div>
-</body>
+</div>
 
+</body>
 </html>

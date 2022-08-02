@@ -84,12 +84,12 @@ nav ul li a:hover{
 }
 
 
-.wrapper-login{
+.wrapper-signUp{
     margin: 0 auto;
     padding: 10px;
     padding-bottom: 15px;
     width: 100%;
-    max-width:1140px;
+    max-width:1500px;
     min-height: 80%;
     display: flex;
     align-items: center;
@@ -97,70 +97,70 @@ nav ul li a:hover{
     flex-direction: column;
 }
 
-.login-container{
+.signUp-container{
     position: relative;
     width: 100%;
-    max-width: 800px;
-    height: 600px;
+    max-width: 1500px;
+    height: 680px;
     display: flex;
     background:whitesmoke;
     box-shadow: 0 0 5px #999999 ;
 }
-.signIn-col-left,
-.signIn-col-right{
+.signUp-col-left,
+.signUp-col-right{
     padding:30px;
     display: flex;
 }
-.signIn-col-left{
+.signUp-col-left{
     width: 60%;
-    clip-path: polygon(0 0,0% 200%,100% 0);
-    background: linear-gradient(#002642,#E59500);;
+    clip-path: polygon(0 0,0% 0 100% 0);
+    background: linear-gradient(#840032,#E5DADA);
 }
-.signIn-col-right{
+.signUp-col-right{
+    background: #002642;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 60px 30px;
     width: 50%;
     margin-left: -10px;
 }
 
-@media(max-width:600px){
-    .login-container{
+@media(max-width:655px){
+    .signUp-container{
         flex-direction: column;
         box-shadow: none;
     }
-    .signIn-col-left,
-    .signIn-col-right{
+    .signUp-col-left,
+    .signUp-col-right{
     width: 100%;
     margin:0;
     clip-path:none
 }
-    .signIn-col-right{
+    .signUp-col-right{
         padding:30px;
         padding-bottom: 10px;
-        background: whitesmoke;
+        background: #002642;
     }
 }
-.login-text{
+.signUp-text{
     font-size: 22px;
     position: relative;
     width: 100%;
     color: whitesmoke;
 }
 
-.login-text h2{
+.signUp-text h2{
     margin: 0 0 15px 0;
     font-size: 33px;
     font-weight: 700;
 }
-.login-text p{
+.signUp-text p{
     margin: 50px 0 20px 0;
     font-size: 22px;
     font-weight: 500;
     line-height: 22px;
 }
-.loginLink{
+.signUp-link{
     margin-left: 5px;
     display: inline-block;
     padding: 10px 10px;
@@ -174,67 +174,68 @@ nav ul li a:hover{
     box-shadow: inset 0 0 0 0 #ffffff;
     transition: .5s;
 }
-.login-text .loginLink:hover{
+.signUp-text .signUp-link:hover{
     color: #002642;
     box-shadow: inset 150px 0 0 0 #ffffff;
 }
 
-.login-form{
+.signUp-form{
     position: relative;
     width: 100%;
 }
-.login-form h2{
+.signUp-form h2{
     margin: 0 0 15px 0;
     font-size: 30px;
     font-weight: 700;
+    color: #E5DADA;
 }
-.login-form label{
+.signUp-form label{
     margin: 10px 10px 10px 0;
     text-align: left;
-    color: #666666;
-    font-size: 18px;
+    color: #E5DADA;
+    font-size: 22px;
 }
-.login-form input{
+.signUp-form input{
     margin: 10px 10px 10px 0;
     text-align: left;
     color: #666666;
     font-size: 15px;
     display: block;
     width: 100%;
-    height: 35px;
+    height: 40px;
     padding: 0 10px;
     outline:none;
-    border: 1px solid whitesmoke;
+    border: 1px solid #E5DADA;
     border-radius: 30px;
 }
-.login-form select{
+.signUp-form select{
     margin: 10px 0;
     display: block;
     width: 100%;
-    height: 35px;
+    height: 40px;
     padding: 0 10px;
     outline:none;
-    border: 1px solid whitesmoke;
+    border: 1px solid #E5DADA;
     border-radius: 30px;
 }
 
-.login-form input:focus{
-    border-color: #840032;
+.signUp-form input:focus{
+    border-color: #002642;
 
 }
-#submit-btn{
+#signUp-btn{
     font-size: 16px;
     text-align: center;
-    color: #002642;
+    color: #840032;
     background: transparent;
     letter-spacing: 1px;
     cursor: pointer;
-    border: 1px solid #002642;
+    border: 1px solid #840032;
     box-shadow: inset 0 0 0 0 #002642;
     transition: .5s;
 }
 
-#submit-btn:hover{
+#signUp-btn:hover{
     color: whitesmoke;
-    box-shadow: inset 250px 0 0 0 #002642;
+    box-shadow: inset 650px 0 0 0 #002642;
 }
