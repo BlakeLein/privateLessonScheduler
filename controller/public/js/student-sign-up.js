@@ -9,7 +9,7 @@ const instructor = document.getElementById("instructor");
 const form = document.getElementById("form");
 const studentAccount = document.getElementById("student-account");
 const instructorAccount = document.getElementById("instructor-account");
-const instructorSelectZone = document.getElementById("instructor-select-zone");
+const instructorSelect = document.getElementById("instructor-select");
 const instrumentSelection = document.getElementById("instrument-options");
 
 const listOfInstruments = [
@@ -58,7 +58,7 @@ const sendStudentData = async () => {
     email: email.value,
     password: password2.value,
     instrument: instrumentOptions.value,
-    instructor: instrumentSelection.value,
+    instructor: instructorSelect.value,
   };
   const dataWeAreSending = await fetch(
     "http://localhost:3000/signup/create-student-user",

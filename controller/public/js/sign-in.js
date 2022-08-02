@@ -19,6 +19,9 @@ const sendStudentData = async () => {
     }
   );
   const json = await dataWeAreSending.json();
+  if (json.message == "Login Success") {
+    window.location.href = "/student/home";
+  }
 };
 
 const sendInstructorData = async () => {
@@ -37,6 +40,9 @@ const sendInstructorData = async () => {
     }
   );
   const json = await dataWeAreSending.json();
+  if (json.message == "Login Success") {
+    window.location.href = "/instructor/home";
+  }
 };
 
 form.addEventListener("submit", (e) => {

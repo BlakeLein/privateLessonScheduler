@@ -11,24 +11,45 @@ const { Instructors } = require("../../sequelize/models");
 // Middle Ware
 app.use(express.json());
 
-router.get("/home", (req, res) => {
-  res.render("instructorView");
+// Check for sessions and account type
+const checkStudentLogin = (req, res, next) => {
+  console.log("We need to get here");
+  console.log(req.session.user.instructor);
+  try {
+    if (req.session.user.instructor) {
+      next();
+    } else {
+      // res.json({
+      //   message: "Login Required",
+      // });
+      res.render("home");
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.send(error.message);
+  }
+};
+const checkTeacherLogin = (req, res, next) => {
+  if (!req.session.user.instructor) {
+    next();
+  } else {
+    res.json({
+      message: "Login Required",
+    });
+    res.render("/signin");
+  }
+};
+
+router.get("/home", checkTeacherLogin, (req, res) => {
+  res.render("instructorHome");
 });
 
-router.get("/create", (req, res) => {
-  res.render("instructorCreate");
-});
-
-router.get("/studio", (req, res) => {
-  res.render("instructorStudio");
-});
-
-router.post("/create-lesson", async (req, res) => {
+router.post("/create-lesson", checkTeacherLogin, async (req, res) => {
   console.log(req.body);
   const { date, start, stop, cost } = req.body;
   try {
     const newLesson = {
-      instructorId: 1,
+      instructorId: req.session.user.id,
       studentId: null, // Add student later?
       date: date,
       startTime: start,

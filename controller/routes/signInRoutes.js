@@ -5,25 +5,52 @@ const router = express.Router();
 const cors = require("cors");
 const es6Renderer = require("express-es6-template-engine");
 const bcrypt = require("bcrypt");
+const models = require("../../sequelize/models");
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const store = new SequelizeStore({
+  db: models.sequelize,
+});
 
 // Import Modals
 const { Students } = require("../../sequelize/models");
 const { Instructors } = require("../../sequelize/models");
 const { Lessons } = require("../../sequelize/models");
+const { response } = require("express");
 
 // Middle Ware
 app.use(express.json());
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+  })
+);
+store.sync();
 
-const checkLogin = (req, res, next) => {
-    if (req.session.user){
-      next()
-    } else 
-    {
-      res.json({
-        message:"Login Required"
-      })
-    }
-    }
+// Check for sessions and account type
+const checkStudentLogin = (req, res, next) => {
+  if (req.session.user.instructor) {
+    next();
+  } else {
+    res.json({
+      message: "Login Required",
+    });
+    res.render("/signin");
+  }
+};
+const checkTeacherLogin = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.json({
+      message: "Login Required",
+    });
+    res.render("/signin");
+  }
+};
 
 // Sign In Routes
 router.get("/", (req, res) => {
@@ -31,72 +58,76 @@ router.get("/", (req, res) => {
 });
 
 router.post("/student-sign-in", async (req, res) => {
-  console.log(req.session)
+  console.log(req.session);
   const { user, pass } = req.body;
+  if (!req.body.user || !req.body.pass) {
+    res.status(400).send("Please provide a username and password");
+    return;
+  }
   try {
-    const findUser = await Students.findOne({
+    const studentUser = await Students.findOne({
       where: {
-        email: user,
+        email: req.body.user,
       },
     });
-    // const userWeFound = findUser.dataValues;
-    // const validated = await bcrypt.compare(pass, userWeFound.password);
-    console.log("found user?")
-    if (!findUser) {
-      console.log("helllllo")
-      // If they fail the login do this.
-      // .status(400)
-      res.send(
-          "That user does not exist in our database. Did you get the username correct?"
-        );
+    const userWeFound = studentUser.dataValues;
+    const validPassword = await bcrypt.compare(pass, userWeFound.password);
+    if (!validPassword) {
+      res.status(400).send("That password is incorrect.");
+      console.log("Wrong Password");
     } else {
-      req.session.findUser = findUser
-      res.json({message:
-        "login sucess",
-      findUser: findUser})
-      // If they log in successfully do this.
-      // res.status(200).send(findUser.dataValues)
-      // console.log("i work, i think")
-      console.log(req.session.findUser)
+      req.session.user = userWeFound;
+      console.log(userWeFound);
+      res.json({
+        message: "Login Success",
+        user: userWeFound,
+      });
+      res.status(200);
     }
   } catch (error) {
-    console.log(error)
-    console.log("oops an erro")
-    res.send("That user is not in our system. Please create an account first.");
+    res.send(error);
   }
 });
 
 router.post("/instructor-sign-in", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.session);
   const { user, pass } = req.body;
+  if (!req.body.user || !req.body.pass) {
+    res.status(400).send("Please provide a username and password");
+    return;
+  }
   try {
-    const findUser = await Instructor.findOne({
+    const instructorUser = await Instructors.findOne({
       where: {
-        email: user,
+        email: req.body.user,
       },
     });
-    const userWeFound = findUser.dataValues;
-    const validated = await bcrypt.compare(password, userWeFound.password);
-    if (!findUser) {
-      res
-        // If they fail the login do this.
-        .status(400)
-        .send(
-          "That user does not exist in our database. Did you get the username correct?"
-        );
+    const userWeFound = instructorUser.dataValues;
+    const validPassword = await bcrypt.compare(pass, userWeFound.password);
+    if (!validPassword) {
+      res.status(400).send("That password is incorrect.");
+      console.log("Wrong Password");
     } else {
-      // If they log in successfully do this.
-      res.status(200).send(findUser.dataValues).redirect("/homepage");
+      req.session.user = instructorUser;
+      res.json({
+        message: "Login Success",
+        user: userWeFound,
+      });
+      console.log("This should have worked");
+      res.status(200);
     }
   } catch (error) {
-    res.send("That user is not in our system. Please create an account first.");
+    res.send(error);
   }
 });
 
-
-
-router.post("/instructor-test", checkLogin, async (req,res)=>{
-  res.send("okay homie you work")
-})
+router.post("/logout", (req, res) => {
+  req.session.user = null;
+  console.log(req.session.user);
+  res.json({
+    message: "Logout Success",
+  });
+  console.log(res.json.message);
+});
 
 module.exports = router;

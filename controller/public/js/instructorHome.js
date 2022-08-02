@@ -11,15 +11,26 @@ const overlay = document.getElementById("overlay");
 const closeModalButton = document.getElementById("modal-close");
 const createLessonButton = document.getElementById("create-lesson");
 
-// Allows the modal to close and overlay to disable when you click outside
-overlay.addEventListener("click", () => {
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
+// Sign Out Functionality
+const signOutButton = document.getElementById("sign-out-btn");
 
-// Closes the modal after it's opened
-closeModalButton.addEventListener("click", () => {
-  closeModal();
+const logOut = async () => {
+  const fetchLogOut = await fetch("http://localhost:3000/signin/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await fetchLogOut.json();
+  if (json.message == "Logout Success") {
+    alert("Successfully Logged Out");
+    window.location.href = "/home";
+  }
+};
+
+signOutButton.addEventListener("click", async () => {
+  console.log("Hi");
+  logOut();
 });
 
 // Functions to open/close modal
@@ -33,6 +44,16 @@ const closeModal = () => {
   modal.classList.remove("active");
   overlay.classList.remove("active");
 };
+// Allows the modal to close and overlay to disable when you click outside
+overlay.addEventListener("click", () => {
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Closes the modal after it's opened
+closeModalButton.addEventListener("click", () => {
+  closeModal();
+});
 
 createLessonButton.addEventListener("click", () => {
   openModal();
