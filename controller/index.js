@@ -48,6 +48,16 @@ app.engine("html", es6Renderer);
 app.set("views", "./public/views");
 app.set("view engine", "html");
 
+const detectUser = (req, res, next) => {
+  if (req.session.user.instructor) {
+    res.render("studentHome");
+  } else if (req.session.user) {
+    res.render("instructorHome");
+  } else {
+    next();
+  }
+};
+
 // Routes
 // Check login and redirect to student or teacher home page
 app.get("/home", (req, res) => {

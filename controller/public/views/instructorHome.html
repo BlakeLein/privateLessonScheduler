@@ -9,6 +9,8 @@
     <script defer src="../js/instructorHome.js"></script>
   </head>
   <body>
+    <button id="view-available">View Available Lessons</button>
+    <button id="view-taken">View Claimed Lessons</button>
     <button id="create-lesson">Create Lesson</button>
     <button id="sign-out-btn">Sign Out</button>
     <div class="main-container">
@@ -16,32 +18,11 @@
         <div class="titles">
           <h1>Available Lessons</h1>
         </div>
-        <div id="available-card-zone">
-          <div id="sample-card">
-            <div id="card-title">Date</div>
-            <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time</div>
-              <div id="card-stop-time">Start Time</div>
-              <div id="cost">Cost</div>
-              <button id="sign-up">Remove Lesson</button>
-            </div>
-          </div>
-          <div id="sample-card">
-            <div id="card-title">Date</div>
-            <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time</div>
-              <div id="card-stop-time">Start Time</div>
-              <div id="cost">Cost</div>
-              <button id="sign-up">Remove Lesson</button>
-            </div>
-          </div>
+        <div id="display-container">
+           <div id="something"></div>         
         </div>
       </div>
-      <div class="inner-container" id="picked-up-lessons">
-        <div class="titles">
-          <h1>Picked Up Lessons</h1>
-        </div>
-      </div>
+    </div>
       <div class="modal" id="modal">
         <div id="modal-header">
           <div id="modal-title">Create a New Lesson

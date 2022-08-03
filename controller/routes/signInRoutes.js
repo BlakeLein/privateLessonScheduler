@@ -30,17 +30,6 @@ app.use(
 );
 store.sync();
 
-// Check for sessions and account type
-const detectUser = (req, res, next) => {
-  if (req.session.user.instructor) {
-    res.render("studentHome");
-  } else if (req.session.user) {
-    res.render("instructorHome");
-  } else {
-    next();
-  }
-};
-
 // Sign In Routes
 router.get("/", (req, res) => {
   res.render("sign-in");
@@ -50,8 +39,9 @@ router.post("/student-sign-in", async (req, res) => {
   console.log(req.session);
   const { user, pass } = req.body;
   if (!req.body.user || !req.body.pass) {
-    res.status(400).send("Please provide a username and password");
-    return;
+    res.status(400).json({
+      message: "please enter username and password",
+    });
   }
   try {
     const studentUser = await Students.findOne({
@@ -62,8 +52,9 @@ router.post("/student-sign-in", async (req, res) => {
     const userWeFound = studentUser.dataValues;
     const validPassword = await bcrypt.compare(pass, userWeFound.password);
     if (!validPassword) {
-      res.status(400).send("That password is incorrect.");
-      console.log("Wrong Password");
+      res.status(400).json({
+        message: "That password is incorrect.",
+      });
     } else {
       req.session.user = userWeFound;
       console.log(userWeFound);
@@ -74,7 +65,7 @@ router.post("/student-sign-in", async (req, res) => {
       res.status(200);
     }
   } catch (error) {
-    res.send(error);
+    res.send(error.message);
   }
 });
 
@@ -82,8 +73,9 @@ router.post("/instructor-sign-in", async (req, res) => {
   // console.log(req.session);
   const { user, pass } = req.body;
   if (!req.body.user || !req.body.pass) {
-    res.status(400).send("Please provide a username and password");
-    return;
+    res.status(400).json({
+      message: "please enter username and password",
+    });
   }
   try {
     const instructorUser = await Instructors.findOne({
@@ -94,15 +86,15 @@ router.post("/instructor-sign-in", async (req, res) => {
     const userWeFound = instructorUser.dataValues;
     const validPassword = await bcrypt.compare(pass, userWeFound.password);
     if (!validPassword) {
-      res.status(400).send("That password is incorrect.");
-      console.log("Wrong Password");
+      res.status(400).json({
+        message: "That password is incorrect.",
+      });
     } else {
       req.session.user = instructorUser;
       res.json({
         message: "Login Success",
         user: userWeFound,
       });
-      console.log("This should have worked");
       res.status(200);
     }
   } catch (error) {
