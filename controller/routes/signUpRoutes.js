@@ -78,8 +78,13 @@ router.post("/create-student-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Students.create(encryptedUser);
-    // res.redirect("/signin");
-  } catch (error) {
+    res.json({
+      message: "Account Created",
+    });
+    res.status(200);
+  } 
+
+  catch (error) {
     res.send(error.message);
   }
 });
@@ -99,7 +104,12 @@ router.post("/create-instructor-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Instructors.create(encryptedUser);
-  } catch (error) {
+    res.json({
+      message: "Account Created",
+    });
+    res.status(200)
+  } 
+  catch (error) {
     res.send(error.message);
   }
 });
