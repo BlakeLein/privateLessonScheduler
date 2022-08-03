@@ -69,9 +69,13 @@ const sendInstructorData = async () => {
       body: JSON.stringify(data),
     }
   );
-  alert("Account successfully created!");
-  window.location.href = "/signin";
   const json = await dataWeAreSending.json();
+  if (json.message != "Account Created"){
+    window.location.href= "/signup/student"}
+  else{
+      alert("Account successfully created!");
+      window.location.href = "/signin";
+    }
 };
 
 // Function to check that passwords match
@@ -86,7 +90,6 @@ form.addEventListener("submit", (e) => {
   if (checkPasswords(password1, password2) == true) {
     e.preventDefault();
     sendInstructorData();
-    alert("Account successfully created!");
   } else {
     alert("Your passwords do not match. Please try again.");
   }
