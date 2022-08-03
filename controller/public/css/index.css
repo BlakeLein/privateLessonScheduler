@@ -68,7 +68,7 @@ body {
   border-bottom: solid 1px black;
 }
 
-/* */
+/* COPY ALL OF THIS OVER */
 
 /* Modal Styles for Create a Lesson Feature*/
 .modal {
@@ -90,7 +90,6 @@ body {
 }
 
 #modal-header {
-  border: solid 1px yellow;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

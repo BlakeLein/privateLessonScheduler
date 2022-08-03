@@ -9,20 +9,27 @@
     <script defer src="../js/instructorHome.js"></script>
   </head>
   <body>
+    <!-- Keep these button Ids the same - location doesn't matter-->
     <button id="view-available">View Available Lessons</button>
     <button id="view-taken">View Claimed Lessons</button>
     <button id="create-lesson">Create Lesson</button>
     <button id="sign-out-btn">Sign Out</button>
+    <!------------------------------------------------------------->
     <div class="main-container">
       <div class="inner-container" id="available-lessons">
         <div class="titles">
           <h1>Available Lessons</h1>
         </div>
+        <!-- This code needs to stay as is (names and location)-->
         <div id="display-container">
-           <div id="something"></div>         
+          <!-- Something is the name of the container that lessons get added to-->
+           <div id="something"></div> 
+           <!-- Lesson card Ids and classes are in the front end JS. Don't change names-->        
         </div>
+            <!---------------------------------------->
       </div>
     </div>
+        <!----------Modal stuff needs to stay at bottom of HTML. Don't mess with form elements------->
       <div class="modal" id="modal">
         <div id="modal-header">
           <div id="modal-title">Create a New Lesson
@@ -53,6 +60,7 @@
         </div>
       </div>
     </div>
+    <!-- Leave this here (copy over Overlay styles)-->
     <div class="" id="overlay"></div>
   </body>
 </html>
