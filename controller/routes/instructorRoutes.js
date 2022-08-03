@@ -7,6 +7,7 @@ const es6Renderer = require("express-es6-template-engine");
 // Import Models
 const { Lessons } = require("../../sequelize/models");
 const { Instructors } = require("../../sequelize/models");
+const { Students } = require("../../sequelize/models");
 const { response } = require("express");
 
 // Middle Ware
@@ -70,23 +71,27 @@ router.post("/populate-lessons", async (req, res) => {
 });
 
 router.post("/claimed-lessons", async (req, res) => {
-  const showAvailableLessons = await Lessons.findAll({
-    where: {
-      instructorId: req.session.user.id,
-      available: false,
-    },
-  });
-  const listOfLessons = [];
-  for (let i = 0; i < showAvailableLessons.length; i++) {
-    listOfLessons.push(showAvailableLessons[i].dataValues);
-  }
+  // const instructorFirstName = req.session.user.firstName;
+  // const instructorLastName = req.session.user.lastName;
 
-  res.json(listOfLessons);
-  // res.render("instructorHome", {
-  //   locals: {
-  //     listOfLessons,
+  // const findMyStudents = await Students.findAll({
+  //   where: {
+  //     instructor: `${instructorFirstName} ${instructorLastName}`,
   //   },
   // });
+  // console.log(findMyStudents);
+
+  const showStudentsWithLessons = await Students.findAll({
+    include: {
+      model: Lessons,
+      as: "lessons",
+      where: {
+        instructorId: req.session.user.id,
+      },
+    },
+  });
+  // console.log(showStudentsWithLessons);
+  res.json(showStudentsWithLessons);
 });
 
 router.post("/create-lesson", checkTeacherLogin, async (req, res) => {

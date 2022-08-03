@@ -23,15 +23,67 @@ router.post("/lessons-from-instructor", async (req, res) => {
     },
   });
   const foundInstructorId = findInstructor.id;
-  console.log(foundInstructorId);
+  // console.log(foundInstructorId);
 
   const showAvailableLessons = await Lessons.findAll({
     where: {
-      id: foundInstructorId,
+      instructorId: foundInstructorId,
+      available: true,
     },
   });
-  console.log(showAvailableLessons);
+  // console.log(showAvailableLessons);
   res.json(showAvailableLessons);
+});
+
+router.post("/view-my-lessons", async (req, res) => {
+  const studentId = req.session.user.id;
+
+  const findMyLessons = await Lessons.findAll({
+    where: {
+      studentId: studentId,
+    },
+  });
+  console.log(findMyLessons);
+  res.json(findMyLessons);
+});
+
+router.put("/claim-lesson/:id", async (req, res) => {
+  console.log("Hit this route");
+  console.log(req.params.id);
+  const id = req.params.id;
+  const claimLesson = await Lessons.findOne({
+    where: {
+      id: id,
+    },
+  });
+  await claimLesson.update({
+    available: false,
+    studentId: req.session.user.id,
+  });
+  if (claimLesson) {
+    res.status(200).send(`lesson claimed`);
+  } else {
+    res.status(400).send("error");
+  }
+});
+
+router.put("/cancel-lesson/:id", async (req, res) => {
+  console.log(req.params.id);
+  const id = req.params.id;
+  const cancelLesson = await Lessons.findOne({
+    where: {
+      id: id,
+    },
+  });
+  await cancelLesson.update({
+    available: true,
+    studentId: null,
+  });
+  if (cancelLesson) {
+    res.status(200).send(`lesson canceled`);
+  } else {
+    res.status(400).send("error");
+  }
 });
 
 // const showAvailableLessons = await Lessons.findAll({

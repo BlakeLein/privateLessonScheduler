@@ -39,13 +39,14 @@ const displayZone = document.getElementById("display-container");
 
 const something = document.querySelector("#something");
 
+// Delete Available Lessons
 something.addEventListener("click", async (e) => {
   console.log("Hit this route");
   console.log(e);
   try {
     e.preventDefault();
 
-    if (e.target.className === "delete") {
+    if (e.target.className === "deleteAvailable") {
       let primaryKey = e.target.id;
       console.log(e.target.id);
 
@@ -60,6 +61,20 @@ something.addEventListener("click", async (e) => {
       );
       alert("Lesson Deleted");
       getAvailableLessons();
+    } else if (e.target.className === "deleteClaimed") {
+      let primaryKey = e.target.id;
+
+      const deletingItem = await fetch(
+        `http://localhost:3000/instructor/remove-lesson/${primaryKey}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert("Lesson Deleted");
+      getClaimedLessons();
     }
   } catch (error) {
     console.log(error);
@@ -77,7 +92,7 @@ const getAvailableLessons = async () => {
     }
   );
   const json = await dataWeAreSending.json();
-  console.log(json);
+
   let html = "";
 
   for (let i = 0; i < json.length; i++) {
@@ -88,7 +103,7 @@ const getAvailableLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
               <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
               <div id="card-cost">Cost: ${json[i].cost}</div>
-              <button class="delete" id="${json[i].id}">Remove Lesson</button>
+              <button class="deleteAvailable" id="${json[i].id}">Remove Lesson</button>
             </div>
           </div>
   `;
@@ -115,20 +130,24 @@ const getClaimedLessons = async () => {
   );
   const json = await dataWeAreSending.json();
   console.log(json);
+  console.log(json.lessons);
   let html = "";
 
-  for (let i = 0; i < json.length; i++) {
-    html += `
+  for (let students = 0; students < json.length; students++) {
+    for (let l = 0; l < json[students].lessons.length; l++) {
+      html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-title">Date: ${json[students].lessons[l].date}</div>
             <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
-              <div id="card-cost">Cost: ${json[i].cost}</div>
-              <button class="delete" id="${json[i].id}">Remove Lesson</button>
+            <div id="student-name">Lesson with ${json[students].firstName} ${json[students].lastName}</div>
+              <div class="card-item" id="card-start-time">Start Time: ${json[students].lessons[l].startTime}</div>
+              <div id="card-stop-time">Start Time: ${json[students].lessons[l].stopTime}</div>
+              <div id="card-cost">Cost: ${json[students].lessons[l].cost}</div>
+              <button class="deleteClaimed" id="${json[students].lessons[l].id}">Delete Lesson</button>
             </div>
           </div>
   `;
+    }
   }
   something.innerHTML = html;
 };
