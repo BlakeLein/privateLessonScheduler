@@ -75,6 +75,20 @@ something.addEventListener("click", async (e) => {
       );
       alert("Lesson Deleted");
       getClaimedLessons();
+    } else if (e.target.className === "removeStudent") {
+      let primaryKey = e.target.id;
+
+      const deletingItem = await fetch(
+        `http://localhost:3000/instructor/remove-student/${primaryKey}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert("Student Removed");
+      getClaimedLessons();
     }
   } catch (error) {
     console.log(error);
@@ -103,7 +117,7 @@ const getAvailableLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
               <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
               <div id="card-cost">Cost: ${json[i].cost}</div>
-              <button class="deleteAvailable" id="${json[i].id}">Remove Lesson</button>
+              <button class="deleteAvailable" id="${json[i].id}">Delete Lesson</button>
             </div>
           </div>
   `;
@@ -143,7 +157,10 @@ const getClaimedLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${json[students].lessons[l].startTime}</div>
               <div id="card-stop-time">Start Time: ${json[students].lessons[l].stopTime}</div>
               <div id="card-cost">Cost: ${json[students].lessons[l].cost}</div>
-              <button class="deleteClaimed" id="${json[students].lessons[l].id}">Delete Lesson</button>
+              <div id="card-buttons">
+                <button class="deleteClaimed" id="${json[students].lessons[l].id}">Delete Lesson</button>
+                <button class="removeStudent" id="${json[students].lessons[l].id}">Remove Student</button>
+              </div>
             </div>
           </div>
   `;
