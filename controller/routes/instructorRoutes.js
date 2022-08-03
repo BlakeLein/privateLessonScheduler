@@ -133,6 +133,25 @@ router.delete("/remove-lesson/:id", async (req, res) => {
   }
 });
 
+router.put("/remove-student/:id", async (req, res) => {
+  console.log(req.params.id);
+  const id = req.params.id;
+  const removeStudent = await Lessons.findOne({
+    where: {
+      id: id,
+    },
+  });
+  await removeStudent.update({
+    available: true,
+    studentId: null,
+  });
+  if (removeStudent) {
+    res.status(200).send(`lesson canceled`);
+  } else {
+    res.status(400).send("error");
+  }
+});
+
 router.get("/get-instructors", async (req, res) => {
   let listOfInstructors = [];
   // Find all instructors by name
