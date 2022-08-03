@@ -63,7 +63,6 @@ router.get("/instructor", (req, res) => {
 });
 
 router.post("/create-student-user", async (req, res) => {
-  console.log(req.body);
   const { first, last, email, password, instrument, instructor } = req.body;
   try {
     const salt = await bcrypt.genSalt(7);
@@ -79,7 +78,7 @@ router.post("/create-student-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Students.create(encryptedUser);
-    res.redirect("/signin");
+    // res.redirect("/signin");
   } catch (error) {
     res.send(error.message);
   }
@@ -100,8 +99,6 @@ router.post("/create-instructor-user", async (req, res) => {
       updatedAt: new Date(),
     };
     const createUser = await Instructors.create(encryptedUser);
-
-    // res.redirect(307, "http://localhost:3000/signin");
   } catch (error) {
     res.send(error.message);
   }

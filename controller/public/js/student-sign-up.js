@@ -38,16 +38,10 @@ const listOfInstruments = [
   "Vocal - Tenor",
   "Vocal - Bass",
 ];
-// const populateInstrumentOptions = (array) => {
-//   for (let i = 0; i < array.length; i++) {
-//     let option = document.createElement("option");
-//     option.innerText = array[i];
-//     instrumentOptions.append(option);
-//   }
-// };
 
-// Populate Instrument Options on Start-up
-// populateInstrumentOptions(listOfInstruments.sort());
+// message: "please enter username and password"
+// message: "That password is incorrect."
+// message: "Login Success",
 
 // Send Info to Routes
 // Functiomn to Send Data to create-student-user route
@@ -70,11 +64,10 @@ const sendStudentData = async () => {
       body: JSON.stringify(data),
     }
   );
+
   alert("Account successfully created!");
   window.location.href = "/signin";
-
   const json = await dataWeAreSending.json();
-  console.log(json);
 };
 
 // Function to check that passwords match

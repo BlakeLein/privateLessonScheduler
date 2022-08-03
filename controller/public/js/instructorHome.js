@@ -11,28 +11,6 @@ const overlay = document.getElementById("overlay");
 const closeModalButton = document.getElementById("modal-close");
 const createLessonButton = document.getElementById("create-lesson");
 
-// Sign Out Functionality
-const signOutButton = document.getElementById("sign-out-btn");
-
-const logOut = async () => {
-  const fetchLogOut = await fetch("http://localhost:3000/signin/logout", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const json = await fetchLogOut.json();
-  if (json.message == "Logout Success") {
-    alert("Successfully Logged Out");
-    window.location.href = "/home";
-  }
-};
-
-signOutButton.addEventListener("click", async () => {
-  console.log("Hi");
-  logOut();
-});
-
 // Functions to open/close modal
 const openModal = () => {
   // if (modal == null) return;
@@ -55,6 +33,111 @@ closeModalButton.addEventListener("click", () => {
   closeModal();
 });
 
+// Populating Available Lessons
+const availableLessonButton = document.getElementById("view-available");
+const displayZone = document.getElementById("display-container");
+
+const something = document.querySelector("#something");
+
+something.addEventListener("click", async (e) => {
+  console.log("Hit this route");
+  console.log(e);
+  try {
+    e.preventDefault();
+
+    if (e.target.className === "delete") {
+      let primaryKey = e.target.id;
+      console.log(e.target.id);
+
+      const deletingItem = await fetch(
+        `http://localhost:3000/instructor/remove-lesson/${primaryKey}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert("Lesson Deleted");
+      getAvailableLessons();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const getAvailableLessons = async () => {
+  const dataWeAreSending = await fetch(
+    "http://localhost:3000/instructor/populate-lessons",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await dataWeAreSending.json();
+  console.log(json);
+  let html = "";
+
+  for (let i = 0; i < json.length; i++) {
+    html += `
+            <div id="sample-card">
+            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-body">
+              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
+              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
+              <div id="card-cost">Cost: ${json[i].cost}</div>
+              <button class="delete" id="${json[i].id}">Remove Lesson</button>
+            </div>
+          </div>
+  `;
+  }
+  something.innerHTML = html;
+};
+
+availableLessonButton.addEventListener("click", () => {
+  getAvailableLessons();
+});
+
+// Populating Available Lessons
+const claimedLessonButton = document.getElementById("view-taken");
+
+const getClaimedLessons = async () => {
+  const dataWeAreSending = await fetch(
+    "http://localhost:3000/instructor/claimed-lessons",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await dataWeAreSending.json();
+  console.log(json);
+  let html = "";
+
+  for (let i = 0; i < json.length; i++) {
+    html += `
+            <div id="sample-card">
+            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-body">
+              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
+              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
+              <div id="card-cost">Cost: ${json[i].cost}</div>
+              <button class="delete" id="${json[i].id}">Remove Lesson</button>
+            </div>
+          </div>
+  `;
+  }
+  something.innerHTML = html;
+};
+
+claimedLessonButton.addEventListener("click", () => {
+  getClaimedLessons();
+});
+
+// Creating a New Lesson
 createLessonButton.addEventListener("click", () => {
   openModal();
 });
@@ -83,4 +166,28 @@ const createNewLesson = async () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault;
   createNewLesson();
+  alert("Lesson Created!");
+  getAvailableLessons();
+});
+
+// Sign Out Functionality
+const signOutButton = document.getElementById("sign-out-btn");
+
+const logOut = async () => {
+  const fetchLogOut = await fetch("http://localhost:3000/signin/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await fetchLogOut.json();
+  if (json.message == "Logout Success") {
+    alert("Successfully Logged Out");
+    window.location.href = "/home";
+  }
+};
+
+// Sign Out of the Page
+signOutButton.addEventListener("click", async () => {
+  logOut();
 });
