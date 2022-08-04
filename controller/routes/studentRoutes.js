@@ -26,8 +26,10 @@ const checkStudentLogin = (req, res, next) => {
 
 // Routes
 
-router.get("/home", checkStudentLogin, (req, res) => {
+router.get("/home", (req, res) => {
+  console.log(req.session.user.firstName);
   const getUserName = req.session.user.firstName;
+  // res.render("studentHome");
   res.render("studentHome", {
     locals: {
       getUserName,

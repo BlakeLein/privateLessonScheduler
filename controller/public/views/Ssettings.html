@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link defer rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link defer rel="stylesheet" href="../css/Sdashboard copy.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      defer
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link defer rel="stylesheet" href="../css/Sdashboard copy.css" />
     <script defer src="../js/settings.js"></script>
     <title>Student Settings</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="dash-container">
-        <nav>
-            <ul>
-                <li><a href="" class =logo>
-                    <img src="../images/music icon.png" alt="">
-                    <span class="nav-item">Musicly<br> Student</span>
-                </a></li>
-                <li><a href="/student/home"class ="home">
-                    <span class="material-symbols-outlined">
-                        home
-                        </span>
-                    <span class="nav-item">Home</span>
-                </a></li>
-                <li><button id="sign-out-btn">
-                    <span class="material-symbols-outlined">
-                        logout
-                    </span>
-                    <span class="nav-item">Logout</span>
-                </button></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <a href="" class="logo">
+              <img src="../images/music icon.png" alt="" />
+              <span class="nav-item"
+                >Musicly<br />
+                Student</span
+              >
+            </a>
+          </li>
+          <li>
+            <a href="/student/home" class="home">
+              <span class="material-symbols-outlined"> home </span>
+              <span class="nav-item">Home</span>
+            </a>
+          </li>
+          <li>
+            <button id="sign-out-btn">
+              <span class="material-symbols-outlined"> logout </span>
+              <span class="nav-item">Logout</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
 
-        <section class = studentSettings-container>
+      <section class="studentSettings-container">
         <h1>Welcome ${getUserName}!</h1>
-        <label>Change Username / Email
-            <input type="text" id="change-user-input">
-        <button id="change-email">Change</button></label>
-        <label>Change Password
-            <input type="text" id="change-password-input">
-        <button id="change-password">Change</button></label>
-        <label>Change My Instrument
-            <select type="text" id="change-instrument-input">
-                <option value="" disabled selected hidden>
-                  Select your Instrument
-                </option>
-            </select>
-        <button id="change-instrument">Change</button></label>
-       <label>Select your Instructor
-              <select id="change-instructor-input" required>
-                <option value="" disabled selected hidden>
-                  Select your Instructor
-                </option>
-                <!-- Options to be appended to page from the js file -->
-                ${listOfInstructors.map(instructor => `
-              <option>${instructor.firstName} ${instructor.lastName}</option>
-                `).join('')}
-              </select>
-        <button id="change-instructor">Change</button></label>
+        <label
+          >Change Username / Email
+          <input type="text" id="change-user-input" />
+          <button id="change-email">Change</button></label
+        >
+        <label
+          >Change Password
+          <input type="text" id="change-password-input" />
+          <button id="change-password">Change</button></label
+        >
+        <label
+          >Change My Instrument
+          <select type="text" id="change-instrument-input">
+            <option value="" disabled selected hidden>
+              Select your Instrument
+            </option>
+          </select>
+          <button id="change-instrument">Change</button></label
+        >
+        <label
+          >Select your Instructor
+          <select id="change-instructor-input" required>
+            <option value="" disabled selected hidden>
+              Select your Instructor
+            </option>
+            <!-- Options to be appended to page from the js file -->
+            ${listOfInstructors.map(instructor => `
+            <option>${instructor.firstName} ${instructor.lastName}</option>
+            `).join('')}
+          </select>
+          <button id="change-instructor">Change</button></label
+        >
         <button id="delete-account">Delete Account</button>
-    </section>
+      </section>
     </div>
-</body>
+  </body>
 </html>
