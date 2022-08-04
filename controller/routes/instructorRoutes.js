@@ -47,7 +47,12 @@ const checkTeacherLogin = (req, res, next) => {
 };
 
 router.get("/home", checkTeacherLogin, async (req, res) => {
-  res.render("instructorHome");
+  const getUserName = req.session.user.firstName;
+  res.render("instructorHome", {
+    locals: {
+      getUserName,
+    },
+  });
 });
 
 router.post("/populate-lessons", async (req, res) => {

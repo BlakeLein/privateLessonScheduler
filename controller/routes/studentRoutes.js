@@ -11,6 +11,30 @@ const { Instructors } = require("../../sequelize/models");
 // Middle Ware
 app.use(express.json());
 
+// Check for sessions and account type
+const checkStudentLogin = (req, res, next) => {
+  try {
+    if (req.session.user.instructor) {
+      next();
+    } else if (req.session.user) {
+      res.render("instructorHome");
+    }
+  } catch (error) {
+    res.render("home");
+  }
+};
+
+// Routes
+
+router.get("/home", checkStudentLogin, (req, res) => {
+  const getUserName = req.session.user.firstName;
+  res.render("studentHome", {
+    locals: {
+      getUserName,
+    },
+  });
+});
+
 router.post("/lessons-from-instructor", async (req, res) => {
   const instructor = req.session.user.instructor;
   const instructorSplit = instructor.split(" ");
@@ -84,41 +108,6 @@ router.put("/cancel-lesson/:id", async (req, res) => {
   } else {
     res.status(400).send("error");
   }
-});
-
-// const showAvailableLessons = await Lessons.findAll({
-//   where: {
-//     instructorId: req.session.user.id,
-//     available: true,
-//   },
-// });
-// const listOfLessons = [];
-// for (let i = 0; i < showAvailableLessons.length; i++) {
-//   listOfLessons.push(showAvailableLessons[i].dataValues);
-// }
-// res.json(listOfLessons);
-// res.render("instructorHome", {
-//   locals: {
-//     listOfLessons,
-//   },
-// });
-
-// Check for sessions and account type
-const checkStudentLogin = (req, res, next) => {
-  try {
-    if (req.session.user.instructor) {
-      next();
-    } else if (req.session.user) {
-      res.render("instructorHome");
-    }
-  } catch (error) {
-    res.render("home");
-  }
-};
-
-router.get("/home", checkStudentLogin, (req, res) => {
-  console.log("Instructor test in route", req.session.user);
-  res.render("studentHome");
 });
 
 module.exports = router;
