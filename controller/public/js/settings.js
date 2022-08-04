@@ -64,10 +64,13 @@ const changeUsername = async () => {
 
 changeUserButton.addEventListener("click", () => {
   console.log("click");
-  confirm(
-    `Are you sure you want to change your username to "${changeUserInput.value}"?`
-  );
-  changeUsername();
+  if (
+    confirm(
+      `Are you sure you want to change your username to "${changeUserInput.value}"?`
+    )
+  ) {
+    changeUsername();
+  }
 });
 
 // Change Password
@@ -100,8 +103,9 @@ const changePassword = async () => {
 
 changePasswordButton.addEventListener("click", () => {
   console.log("click");
-  // confirm(`Are you sure you want to change your password?`);
-  changePassword();
+  if (confirm(`Are you sure you want to change your password?`)) {
+    changePassword();
+  }
 });
 
 // Change Instrument
@@ -173,10 +177,13 @@ const changeInstrument = async () => {
 
 changeInstrumentButton.addEventListener("click", () => {
   console.log("click");
-  confirm(
-    `Are you sure you want to change your instrument to "${changeInstrumentInput.value}"?`
-  );
-  changeInstrument();
+  if (
+    confirm(
+      `Are you sure you want to change your instrument to "${changeInstrumentInput.value}"?`
+    )
+  ) {
+    changeInstrument();
+  }
 });
 
 // Delete Account
@@ -201,38 +208,42 @@ const deleteAccount = async () => {
 
 deleteButton.addEventListener("click", () => {
   console.log("click");
-  confirm(`Are you sure you want to delete your account?`);
-  deleteAccount();
+  if (confirm(`Are you sure you want to delete your account?`)) {
+    deleteAccount();
+  }
 });
 
-// // Change Instructor
-// const changeInstructor = async () => {
-//   const data = {
-//     newInstructor: changeInstructorInput.value,
-//   };
-//   const sendNewInstructor = await fetch(
-//     "http://localhost:3000/settings/change-instructor",
-//     {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(data),
-//     }
-//   );
-//   const json = await sendNewInstructor.json();
-//   if (json === "changed student instructor") {
-//     alert(
-//       "Successfully changed student instructor. You will now be logged out."
-//     );
-//     logOut();
-//   }
-// };
+// Change Instructor
+const changeInstructor = async () => {
+  const data = {
+    newInstructor: changeInstructorInput.value,
+  };
+  const sendNewInstructor = await fetch(
+    "http://localhost:3000/settings/change-instructor",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  const json = await sendNewInstructor.json();
+  if (json === "changed student instructor") {
+    alert(
+      "Successfully changed student instructor. You will now be logged out."
+    );
+    logOut();
+  }
+};
 
-// changeInstructorButton.addEventListener("click", () => {
-//   console.log("click");
-//   // confirm(
-//   //   `Are you sure you want to change your instructor to "${changeInstructorInput.value}"?`
-//   // );
-//   changeInstructor();
-// });
+changeInstructorButton.addEventListener("click", () => {
+  console.log("click");
+  if (
+    confirm(
+      `Are you sure you want to change your instructor to "${changeInstructorInput.value}"?`
+    )
+  ) {
+    changeInstructor();
+  }
+});
