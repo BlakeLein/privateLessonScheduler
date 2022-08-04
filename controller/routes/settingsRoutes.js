@@ -40,12 +40,15 @@ router.get("/", checkUser, async (req, res) => {
     listOfInstructors.push(getInstructors[i]);
   }
   if (req.session.user.instructor) {
+    // res.render("Ssettings");
     res.render("Ssettings", {
       locals: {
         listOfInstructors,
+        getUserName,
       },
     });
   } else if (req.session.user) {
+    // res.render("Isettings");
     res.render("Isettings", {
       locals: {
         listOfInstructors,
@@ -57,13 +60,11 @@ router.get("/", checkUser, async (req, res) => {
 
 router.put("/change-username", checkUser, async (req, res) => {
   const { newUsername } = req.body;
-  console.log(newUsername);
-
   try {
     if (req.session.user.instructor) {
       const findStudent = await Students.findOne({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
       await findStudent.update({
@@ -71,7 +72,6 @@ router.put("/change-username", checkUser, async (req, res) => {
       });
       res.json("changed student email");
     } else if (req.session.user) {
-      console.log(req.session.user.id);
       const findInstructor = await Instructors.findOne({
         where: {
           id: req.session.user.id,
@@ -152,20 +152,20 @@ router.put("/change-instrument", checkUser, async (req, res) => {
 });
 
 router.put("/change-instructor", checkUser, async (req, res) => {
-  // const { newInstructor } = req.body;
-  // try {
-  //   const findStudent = await Students.findOne({
-  //     where: {
-  //       id: req.session.id,
-  //     },
-  //   });
-  //   await findStudent.update({
-  //     instrument: newInstrument,
-  //   });
-  //   res.json("changed student instrument");
-  // } catch (error) {
-  //   res.send(error);
-  // }
+  const { newInstructor } = req.body;
+  try {
+    const findStudent = await Students.findOne({
+      where: {
+        id: req.session.user.id,
+      },
+    });
+    await findStudent.update({
+      instructor: newInstructor,
+    });
+    res.json("changed student instructor");
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 router.delete("/delete-account", checkUser, async (req, res) => {
