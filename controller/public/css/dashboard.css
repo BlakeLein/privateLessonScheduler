@@ -45,7 +45,7 @@ nav{
 a{
     position: relative;
     color: rgb(85,83,83);
-    font-size: 14px;
+    font-size: 21px;
     display: table;
     width: 280px;
     padding: 10px;
@@ -63,7 +63,6 @@ nav .material-symbols-outlined{
     position: relative;
     top: 12px;
     margin-left: 10px;
-    font-size: 25px;
 }
 a:hover{
     background: whitesmoke;
@@ -194,17 +193,24 @@ border-bottom: solid 1px black;
     float: right;
     margin: -20px 20px 20px 0;
 }
+
+li{
+  padding: 12px 0;
+}
 li button{
     position: relative;
     color: rgb(85,83,83);
-    font-size: 14px;
+    font-size: 21px;
     display: table;
-    width: 260px;
-    padding: 10px;
     background: #E5DADA;
 }
+
 li button:hover{
     background: whitesmoke;
+    cursor: pointer;
+}
+#sign-out-btn:hover{
+  width: 98%;
 }
 #something{
     padding-inline-start: 0;
@@ -231,6 +237,10 @@ li button:hover{
     z-index: 10;
     background-color: #002642;
   }
+
+  #modal-body{
+    height: 90%;
+  }
   .active {
     transform: scale(1);
   }
@@ -245,6 +255,7 @@ li button:hover{
     width: 100%;
     font-size: 40px;
     color: #b7b7b7;
+    margin-top: 10px;
     margin-left: 10px;
   }
   
@@ -263,6 +274,7 @@ li button:hover{
     margin-right: 10px;
   }
   .modal-body {
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -273,24 +285,29 @@ li button:hover{
     width: 80%;
     height: 90px;
     margin: 10px;
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: 700;
     padding: 10px;
   }
   #start-time{
     margin-top: 5px;
     background:#E5DADA;
+    font-size: 30px;
   }
   #stop-time{
     margin-top: 5px;
     background:#E5DADA;
+    font-size: 25px;
   }
   #date{
-    margin-top: 5px;
+    margin-top: 8px;
     background:#E5DADA;
+    font-size: 25px;
   }
   #cost{
-    margin-top: 5px;
+    margin-top: 8px;
     background:#E5DADA;
+    font-size: 25px;
   }
   
   .form-submit-button {
@@ -298,7 +315,7 @@ li button:hover{
     width: 200px;
     border: none;
     height: 50px;
-    border-radius: 30px;
+    border-radius: 25px;
     transition: .5s;
     background: #E5DADA;
   }
