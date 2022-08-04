@@ -41,8 +41,8 @@ router.get("/student", async (req, res) => {
     "Vocal - Bass",
   ];
   const sortedInstruments = listOfInstruments.sort();
-  let listOfInstructors = [];
   // Find all instructors by name
+  let listOfInstructors = [];
   let getInstructors = await Instructors.findAll({
     attributes: ["firstName", "lastName"],
   });
@@ -82,9 +82,7 @@ router.post("/create-student-user", async (req, res) => {
       message: "Account Created",
     });
     res.status(200);
-  } 
-
-  catch (error) {
+  } catch (error) {
     res.send(error.message);
   }
 });
@@ -107,9 +105,8 @@ router.post("/create-instructor-user", async (req, res) => {
     res.json({
       message: "Account Created",
     });
-    res.status(200)
-  } 
-  catch (error) {
+    res.status(200);
+  } catch (error) {
     res.send(error.message);
   }
 });

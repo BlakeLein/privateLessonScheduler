@@ -16,11 +16,11 @@ const store = new SequelizeStore({
 });
 
 // Route Imports
-
 const signUpRoutes = require("./routes/signUpRoutes");
 const signInRoutes = require("./routes/signInRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const instructorRoutes = require("./routes/instructorRoutes");
+const settingsRoutes = require("./routes/settingsRoutes");
 
 // // Middle Ware
 app.use(express.json());
@@ -48,16 +48,6 @@ app.engine("html", es6Renderer);
 app.set("views", "./public/views");
 app.set("view engine", "html");
 
-const detectUser = (req, res, next) => {
-  if (req.session.user.instructor) {
-    res.render("studentHome");
-  } else if (req.session.user) {
-    res.render("instructorHome");
-  } else {
-    next();
-  }
-};
-
 // Routes
 // Check login and redirect to student or teacher home page
 app.get("/home", (req, res) => {
@@ -68,5 +58,6 @@ app.use("/signup", signUpRoutes);
 app.use("/signin", signInRoutes);
 app.use("/student", studentRoutes);
 app.use("/instructor", instructorRoutes);
+app.use("/settings", settingsRoutes);
 
 app.listen(PORT, console.log(`Listening on Port ${PORT}`));

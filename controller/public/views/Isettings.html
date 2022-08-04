@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link defer rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link defer rel="stylesheet" href="../css/dashboard.css">
+        <script defer src="../js/settings.js"></script>
     <title>Instructor Settings</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                     <img src="../images/music icon.png" alt="">
                     <span class="nav-item">Musicly Instructor</span>
                 </a></li>
-                <li><a href=""class ="home">
+                <li><a href="instructor/home"class ="home">
                     <span class="material-symbols-outlined">
                         home
                         </span>
@@ -67,7 +68,16 @@
                 </a></li>
             </ul>
         </nav>
-
+        <label>Change Username / Email
+            <input type="text" id="change-user-input">
+        <button id="change-email">Change</button></label>
+        <label>Change Password
+            <input type="text" id="change-password-input">
+        <button id="change-password">Change</button></label>
+        <label>Change My Instrument
+            <input type="text" id="change-instrument-input">
+        <button id="change-instrument">Change</button></label>
+        <button id="delete-account">Delete Account</button>
     </div>
 </body>
 </html>
