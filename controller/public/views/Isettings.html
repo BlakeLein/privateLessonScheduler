@@ -68,6 +68,7 @@
                 </a></li>
             </ul>
         </nav>
+        <h1>Welcome ${getUserName}!</h1>
         <label>Change Username / Email
             <input type="text" id="change-user-input">
         <button id="change-email">Change</button></label>
@@ -75,7 +76,11 @@
             <input type="text" id="change-password-input">
         <button id="change-password">Change</button></label>
         <label>Change My Instrument
-            <input type="text" id="change-instrument-input">
+            <select type="text" id="change-instrument-input">
+                <option value="" disabled selected hidden>
+                  Select your Instrument
+                </option>
+            </select>
         <button id="change-instrument">Change</button></label>
         <button id="delete-account">Delete Account</button>
     </div>
