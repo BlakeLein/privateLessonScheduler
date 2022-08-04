@@ -1,0 +1,192 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+*{
+    margin:0;
+    padding:0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+body{
+    background: linear-gradient(#002642,#E5DADA);
+}
+.dash-container{
+    display: flex;
+}
+nav{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #E5DADA;
+    width: 280px;
+    /* overflow: hidden; */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) ;
+}
+.logo{
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;;
+}
+.logo img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+a{
+    position: relative;
+    color: rgb(85,83,83);
+    font-size: 21px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+}
+
+nav .material-symbols-outlined{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+a:hover{
+    background: whitesmoke;
+}
+
+
+/* DISPLAY AREA */
+
+.main-container{
+    position: relative;
+    padding: 20px;
+    width: 90%;
+}
+.main-area{
+    display: flex;
+    width: 100%;
+}
+
+.main-top{
+    display: flex;
+    margin-top: 20px;
+}
+.main-top i{
+    position: absolute;
+    right: 0;
+    margin: 10px 30px;
+    color: rgb(11, 109, 109);
+    cursor:pointer
+}
+#sample-card{
+    width: 100%;
+    margin: 10px;
+    background: #E5DADA;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+#card-title {
+text-align: center;
+border-bottom: solid 1px black;
+}
+
+.card h3{
+    margin: 10px;
+    text-transform: capitalize;
+}
+.card p{
+    font-size: 20px;
+    display: flex;
+    padding: 3px;
+    flex-direction: column;
+}
+.claim{
+    background: #840032;
+    color: whitesmoke;
+    padding:7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.claim:hover{
+    background: #002642;
+}
+.cancel{
+    background: #840032;
+    color: whitesmoke;
+    padding:7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.cancel:hover{
+    background: #002642;
+}
+
+
+.deleteAvailable{
+    background: #840032;
+    color: whitesmoke;
+    padding:7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.deleteAvailable:hover{
+    background: #002642;
+}
+
+
+li{
+  padding: 12px 0;
+}
+li button{
+    position: relative;
+    color: rgb(85,83,83);
+    font-size: 21px;
+    display: table;
+    background: #E5DADA;
+}
+
+li button:hover{
+    background: whitesmoke;
+    cursor: pointer;
+}
+#sign-out-btn:hover{
+  width: 98%;
+}
+#something{
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+  
+
+  button {
+    padding: 5px;
+    margin: 5px;
+  }
+  
