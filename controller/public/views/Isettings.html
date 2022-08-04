@@ -8,7 +8,6 @@
     <link defer rel="stylesheet" href="../css/index.css" />
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script defer src="../js/instructorHome.js"></script>
     <script defer src="../js/settings.js"></script>
   </head>
   <body>
@@ -35,7 +34,7 @@
         </nav>
         
         <section class="main-container">
-          <h1>SETTINGS FOR ${getUsername}</req></h1>
+          <h1>SETTINGS FOR ${getUserName}</req></h1>
             <label>Change Username / Email
                 <input type="text" id="change-user-input">
             <button id="change-email">Change</button></label>
@@ -43,8 +42,12 @@
                 <input type="text" id="change-password-input">
             <button id="change-password">Change</button></label>
             <label>Change My Instrument
-                <input type="text" id="change-instrument-input">
-            <button id="change-instrument">Change</button></label>
+            <select type="text" id="change-instrument-input">
+                <option value="" disabled selected hidden>
+                  Select your Instrument
+                </option>
+            </select>
+        <button id="change-instrument">Change</button></label>
             <button id="delete-account">Delete Account</button>
             <div id="display-container">
                 <div class="inner-container" id="available-lessons">
