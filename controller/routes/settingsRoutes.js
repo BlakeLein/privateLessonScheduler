@@ -26,6 +26,9 @@ const checkUser = (req, res, next) => {
 };
 
 router.get("/", checkUser, async (req, res) => {
+  // Get Username
+  const getUserName = req.session.user.firstName;
+
   // Find all instructors by name
   let listOfInstructors = [];
   let getInstructors = await Instructors.findAll({
@@ -45,6 +48,7 @@ router.get("/", checkUser, async (req, res) => {
     res.render("Isettings", {
       locals: {
         listOfInstructors,
+        getUserName,
       },
     });
   }
