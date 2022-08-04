@@ -76,22 +76,7 @@ a:hover{
     padding: 20px;
     width: 90%;
 }
-.main-area{
-    display: flex;
-    width: 100%;
-}
 
-.main-top{
-    display: flex;
-    margin-top: 20px;
-}
-.main-top i{
-    position: absolute;
-    right: 0;
-    margin: 10px 30px;
-    color: rgb(11, 109, 109);
-    cursor:pointer
-}
 #sample-card{
     width: 100%;
     margin: 10px;
@@ -127,72 +112,33 @@ border-bottom: solid 1px black;
     transition: .5s;
 }
 .deleteAvailable:hover{
+    background: #E59500;
+}
+.deleteClaimed{
+    background: #840032;
+    color: whitesmoke;
+    padding:7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .5s;
+}
+.deleteClaimed:hover{
+    background: #E59500;
+}
+.removeStudent{
     background: #002642;
-}
-.main-area .card i{
-    font-size: 22px;
-    padding: 10px;
-}
-
-
-.main-2{
-    margin-top: 20px;
-    text-transform: capitalize;
-}
-.main2-box{
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #fff;
+    color: whitesmoke;
+    padding:7px 15px;
     border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-
-.main2-box ul{
-    list-style: none;
-    display: flex;
-
-}
-.main2-box ul li{
-    margin: 10px;
-    color: gray;
+    margin-top: 15px;
     cursor: pointer;
+    transition: .5s;
 }
-.active{
-    color:black;
-    border-bottom: 1px solid black;
+.removeStudent:hover{
+    background: #E59500;
 }
-.main2-content{
-    display: flex;
-}
-.box{
-    width: 33%;
-    padding:10px;
-    margin: 10px;
-    border-radius: 10px;
-    background: rgba(235, 233, 233);
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-}
-.box p{
-    font-size: 12px;
-    margin-top: 5px;
-}
-.box button{
-    background: black;
-    color: #E5DADA;
-    padding: 7px 10px;
-    border-radius: 10px;
-    margin-top: 3rem;
-    cursor: pointer;
-}
-.box button:hover{
-    background: rgba(0, 0, 0, 0.842);
-}
-.box i{
-    font-size: 7rem;
-    float: right;
-    margin: -20px 20px 20px 0;
-}
+
 
 li{
   padding: 12px 0;
@@ -347,7 +293,6 @@ li button:hover{
     transform: scale(1);
   }
   
-  /* */
   
   .modal-form {
     width: 100%;
