@@ -1,270 +1,265 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-*{
-    margin:0;
-    padding:0;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-body{
-    background: linear-gradient(#840032,#E5DADA);
+body {
+  background: linear-gradient(#840032, #e5dada);
 }
-.dash-container{
-    display: flex;
+.dash-container {
+  display: flex;
 }
-nav{
-    position: relative;
-    top: 0;
-    bottom: 0;
-    height: 100vh;
-    left: 0;
-    background: #E5DADA;
-    width: 280px;
-    /* overflow: hidden; */
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) ;
+nav {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  background: #e5dada;
+  width: 280px;
+  /* overflow: hidden; */
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
-.logo{
-    text-align: center;
-    display: flex;
-    margin: 10px 0 0 10px;;
+.logo {
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
 }
-.logo img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
-.logo span{
-    font-weight: bold;
-    padding-left: 15px;
-    font-size: 18px;
-    text-transform: uppercase;
+.logo span {
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
 }
-a{
-    position: relative;
-    color: rgb(85,83,83);
-    font-size: 21px;
-    display: table;
-    width: 280px;
-    padding: 10px;
-}
-
-nav .material-symbols-outlined{
-    position: relative;
-    width: 70px;
-    height: 40px;
-    top: 14px;
-    font-size: 20px;
-    text-align: center;
-}
-.nav-item{
-    position: relative;
-    top: 12px;
-    margin-left: 10px;
-}
-a:hover{
-    background: whitesmoke;
+a {
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 21px;
+  display: table;
+  width: 280px;
+  padding: 10px;
 }
 
+nav .material-symbols-outlined {
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 14px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item {
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+}
+a:hover {
+  background: whitesmoke;
+}
 
 /* DISPLAY AREA */
 
-.main-container{
-    position: relative;
-    padding: 20px;
-    width: 90%;
+.main-container {
+  position: relative;
+  padding: 20px;
+  width: 90%;
 }
 
-#sample-card{
-    width: 100%;
-    margin: 10px;
-    background: #E5DADA;
-    text-align: center;
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+#sample-card {
+  width: 100%;
+  margin: 10px;
+  background: #e5dada;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
 #card-title {
-text-align: center;
-border-bottom: solid 1px black;
+  text-align: center;
+  border-bottom: solid 1px black;
 }
 
-.card h3{
-    margin: 10px;
-    text-transform: capitalize;
+.card h3 {
+  margin: 10px;
+  text-transform: capitalize;
 }
-.card p{
-    font-size: 20px;
-    display: flex;
-    padding: 3px;
-    flex-direction: column;
+.card p {
+  font-size: 20px;
+  display: flex;
+  padding: 3px;
+  flex-direction: column;
 }
-.deleteAvailable{
-    background: #840032;
-    color: whitesmoke;
-    padding:7px 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-    transition: .5s;
+.deleteAvailable {
+  background: #840032;
+  color: whitesmoke;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.5s;
 }
-.deleteAvailable:hover{
-    background: #E59500;
+.deleteAvailable:hover {
+  background: #e59500;
 }
-.deleteClaimed{
-    background: #840032;
-    color: whitesmoke;
-    padding:7px 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-    transition: .5s;
+.deleteClaimed {
+  background: #840032;
+  color: whitesmoke;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.5s;
 }
-.deleteClaimed:hover{
-    background: #E59500;
+.deleteClaimed:hover {
+  background: #e59500;
 }
-.removeStudent{
-    background: #002642;
-    color: whitesmoke;
-    padding:7px 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-    transition: .5s;
+.removeStudent {
+  background: #002642;
+  color: whitesmoke;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.5s;
 }
-.removeStudent:hover{
-    background: #E59500;
+.removeStudent:hover {
+  background: #e59500;
 }
 
-
-li{
+li {
   padding: 12px 0;
 }
-li button{
-    position: relative;
-    color: rgb(85,83,83);
-    font-size: 21px;
-    display: table;
-    background: #E5DADA;
+li button {
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 21px;
+  display: table;
+  background: #e5dada;
 }
 
-li button:hover{
-    background: whitesmoke;
-    cursor: pointer;
+li button:hover {
+  background: whitesmoke;
+  cursor: pointer;
 }
-#sign-out-btn:hover{
+#sign-out-btn:hover {
   width: 98%;
 }
-#something{
-    padding-inline-start: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 20px;
-    padding: 20px;
+#something {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
 }
-
-
 
 /* Modal Styles for Create a Lesson Feature*/
 .modal {
-    position: fixed;
-    left: 15%;
-    right: 15%;
-    bottom: 15%;
-    top: 15%;
-    border: solid 1px black;
-    border-radius: 10px;
-    /* Comment out this transform property to style the modal */
-    transform: scale(0);
-    transition: 200ms ease-in-out;
-    z-index: 10;
-    background-color: #002642;
-  }
+  position: fixed;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
+  top: 15%;
+  border: solid 1px black;
+  border-radius: 10px;
+  transform: scale(0);
+  z-index: 10;
+  background-color: #002642;
+}
 
-  #modal-body{
-    height: 90%;
-  }
-  .active {
-    transform: scale(1);
-  }
-  
-  #modal-header {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-  }
-  
-  #modal-title {
-    width: 100%;
-    font-size: 40px;
-    color: #b7b7b7;
-    margin-top: 10px;
-    margin-left: 10px;
-  }
-  
-  #modal-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    color:#E5DADA;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.25rem;
-    font-weight: bold;
-    align-self: center;
-    margin-right: 10px;
-  }
-  .modal-body {
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+#modal-body {
+  height: 90%;
+}
+.active {
+  transform: scale(1);
+}
 
-  .form-item {
-    color: 707070;
-    width: 80%;
-    height: 90px;
-    margin: 10px;
-    font-size: 30px;
-    font-weight: 700;
-    padding: 10px;
-  }
-  #start-time{
-    margin-top: 5px;
-    background:#E5DADA;
-    font-size: 30px;
-  }
-  #stop-time{
-    margin-top: 5px;
-    background:#E5DADA;
-    font-size: 25px;
-  }
-  #date{
-    margin-top: 8px;
-    background:#E5DADA;
-    font-size: 25px;
-  }
-  #cost{
-    margin-top: 8px;
-    background:#E5DADA;
-    font-size: 25px;
-  }
-  
-  .form-submit-button {
-    margin-top: 10px;
-    width: 200px;
-    border: none;
-    height: 50px;
-    border-radius: 25px;
-    transition: .5s;
-    background: #E5DADA;
-  }
+#modal-header {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+#modal-title {
+  width: 100%;
+  font-size: 40px;
+  color: #b7b7b7;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #e5dada;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  align-self: center;
+  margin-right: 10px;
+}
+.modal-body {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-item {
+  color: 707070;
+  width: 80%;
+  height: 90px;
+  margin: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  padding: 10px;
+}
+#start-time {
+  margin-top: 5px;
+  background: #e5dada;
+  font-size: 30px;
+}
+#stop-time {
+  margin-top: 5px;
+  background: #e5dada;
+  font-size: 25px;
+}
+#date {
+  margin-top: 8px;
+  background: #e5dada;
+  font-size: 25px;
+}
+#cost {
+  margin-top: 8px;
+  background: #e5dada;
+  font-size: 25px;
+}
+
+.form-submit-button {
+  margin-top: 10px;
+  width: 200px;
+  border: none;
+  height: 50px;
+  border-radius: 25px;
+  transition: 0.5s;
+  background: #e5dada;
+}
+
 
   .form-submit-button:hover{
     
