@@ -112,11 +112,11 @@ const getAvailableLessons = async () => {
   for (let i = 0; i < json.length; i++) {
     html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[i].date}</div>
+            <h3 id="card-title">Date: ${json[i].date}</h3>
             <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
-              <div id="card-cost">Cost: ${json[i].cost}</div>
+              <p class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</p>
+              <p id="card-item">Start Time: ${json[i].stopTime}</p>
+              <p id="card-item">Cost: ${json[i].cost}</p>
               <button class="deleteAvailable" id="${json[i].id}">Delete Lesson</button>
             </div>
           </div>

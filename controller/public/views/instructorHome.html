@@ -6,29 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Instructor Home</title>
     <link defer rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script defer src="../js/instructorHome.js"></script>
   </head>
   <body>
-    <!-- Keep these button Ids the same - location doesn't matter-->
-    <button id="view-available">View Available Lessons</button>
-    <button id="view-taken">View Claimed Lessons</button>
-    <button id="create-lesson">Create Lesson</button>
-    <button id="sign-out-btn">Sign Out</button>
-    <!------------------------------------------------------------->
-    <div class="main-container">
-      <div class="inner-container" id="available-lessons">
-        <div class="titles">
-          <h1>Available Lessons</h1>
-        </div>
-        <!-- This code needs to stay as is (names and location)-->
+    <div class="dash-container">
+      <nav>
+          <ul>
+              <li><a href="" class =logo>
+                  <img src="../images/music icon.png" alt="">
+                  <span class="nav-item">Musicly Instructor</span>
+              </a></li>
+              <li><a href=""class ="home">
+                  <span class="material-symbols-outlined">
+                      home
+                      </span>
+                  <span class="nav-item">Home</span>
+              </a></li>
+              <li><button id="create-lesson">
+                  <span class="material-symbols-outlined">
+                      add_circle
+                      </span>
+                  <span class="nav-item">Create a Lesson</span>
+                </button></li>
+              <li><button id="view-available">
+                  <span class="material-symbols-outlined">
+                      visibility
+                      </span>
+                  <span class="nav-item">Available Lessons</span>
+              </button></li>
+              <li><button id="view-taken">
+                  <span class="material-symbols-outlined">
+                      visibility
+                      </span>
+                  <span class="nav-item">Scheduled Lessons</span>
+              </button></li>
+              <li><a href=""class ="viewStudents">
+                  <span class="material-symbols-outlined">
+                      visibility
+                      </span>
+                  <span class="nav-item">My Students</span>
+              </a></li>
+              <li><a href=""class ="Settings">
+                  <span class="material-symbols-outlined">
+                      settings
+                      </span>
+                  <span class="nav-item">Settings</span>
+              </a></li>
+              </a></li>
+              <li><a href="#"class ="messageCenter">
+                  <span class="material-symbols-outlined">
+                      chat
+                      </span>
+                  <span class="nav-item">Message Center</span>
+              </a></li>
+              <li><button id="sign-out-btn">
+                  <span class="material-symbols-outlined">
+                      logout
+                      </span>
+                  <span class="nav-item">Logout</span>
+                </button></li>
+          </ul>
+      </nav>
+
+      <section class="main-container">
         <div id="display-container">
-          <!-- Something is the name of the container that lessons get added to-->
-           <div id="something"></div> 
-           <!-- Lesson card Ids and classes are in the front end JS. Don't change names-->        
+          <div class="inner-container" id="available-lessons">
+          <ul id="something">
+          </ul>
+          </div>
         </div>
-            <!---------------------------------------->
-      </div>
-    </div>
+      </section>
+  </div>
+
+
         <!----------Modal stuff needs to stay at bottom of HTML. Don't mess with form elements------->
       <div class="modal" id="modal">
         <div id="modal-header">

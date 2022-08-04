@@ -10,7 +10,7 @@
 
 }
 body{
-    background: #dfe9f5;
+    background: linear-gradient(#840032,#E5DADA);
 }
 .dash-container{
     display: flex;
@@ -21,7 +21,7 @@ nav{
     bottom: 0;
     height: 100vh;
     left: 0;
-    background: #fff;
+    background: #E5DADA;
     width: 280px;
     /* overflow: hidden; */
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) ;
@@ -45,7 +45,7 @@ nav{
 a{
     position: relative;
     color: rgb(85,83,83);
-    font-size: 14px;
+    font-size: 21px;
     display: table;
     width: 280px;
     padding: 10px;
@@ -63,7 +63,6 @@ nav .material-symbols-outlined{
     position: relative;
     top: 12px;
     margin-left: 10px;
-    font-size: 25px;
 }
 a:hover{
     background: whitesmoke;
@@ -93,24 +92,33 @@ a:hover{
     color: rgb(11, 109, 109);
     cursor:pointer
 }
-.main-area .card{
-    width: 25%;
+#sample-card{
+    width: 100%;
     margin: 10px;
-    background: #fff;
+    background: #E5DADA;
     text-align: center;
     border-radius: 20px;
     padding: 10px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
-.main-area .card h3{
+
+#card-title {
+text-align: center;
+border-bottom: solid 1px black;
+}
+
+.card h3{
     margin: 10px;
     text-transform: capitalize;
 }
-.main-area .card p{
+.card p{
     font-size: 20px;
+    display: flex;
+    padding: 3px;
+    flex-direction: column;
 }
-.main-area .card button{
-    background: maroon;
+.deleteAvailable{
+    background: #840032;
     color: whitesmoke;
     padding:7px 15px;
     border-radius: 10px;
@@ -118,15 +126,13 @@ a:hover{
     cursor: pointer;
     transition: .5s;
 }
-.main-area .card button:hover{
-    background: blue;
+.deleteAvailable:hover{
+    background: #002642;
 }
 .main-area .card i{
     font-size: 22px;
     padding: 10px;
 }
-
-
 
 
 .main-2{
@@ -173,7 +179,7 @@ a:hover{
 }
 .box button{
     background: black;
-    color: whitesmoke;
+    color: #E5DADA;
     padding: 7px 10px;
     border-radius: 10px;
     margin-top: 3rem;
@@ -188,3 +194,212 @@ a:hover{
     margin: -20px 20px 20px 0;
 }
 
+li{
+  padding: 12px 0;
+}
+li button{
+    position: relative;
+    color: rgb(85,83,83);
+    font-size: 21px;
+    display: table;
+    background: #E5DADA;
+}
+
+li button:hover{
+    background: whitesmoke;
+    cursor: pointer;
+}
+#sign-out-btn:hover{
+  width: 98%;
+}
+#something{
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+
+
+/* Modal Styles for Create a Lesson Feature*/
+.modal {
+    position: fixed;
+    left: 15%;
+    right: 15%;
+    bottom: 15%;
+    top: 15%;
+    border: solid 1px black;
+    border-radius: 10px;
+    /* Comment out this transform property to style the modal */
+    transform: scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 10;
+    background-color: #002642;
+  }
+
+  #modal-body{
+    height: 90%;
+  }
+  .active {
+    transform: scale(1);
+  }
+  
+  #modal-header {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  }
+  
+  #modal-title {
+    width: 100%;
+    font-size: 40px;
+    color: #b7b7b7;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  #modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color:#E5DADA;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    align-self: center;
+    margin-right: 10px;
+  }
+  .modal-body {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-item {
+    color: 707070;
+    width: 80%;
+    height: 90px;
+    margin: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 10px;
+  }
+  #start-time{
+    margin-top: 5px;
+    background:#E5DADA;
+    font-size: 30px;
+  }
+  #stop-time{
+    margin-top: 5px;
+    background:#E5DADA;
+    font-size: 25px;
+  }
+  #date{
+    margin-top: 8px;
+    background:#E5DADA;
+    font-size: 25px;
+  }
+  #cost{
+    margin-top: 8px;
+    background:#E5DADA;
+    font-size: 25px;
+  }
+  
+  .form-submit-button {
+    margin-top: 10px;
+    width: 200px;
+    border: none;
+    height: 50px;
+    border-radius: 25px;
+    transition: .5s;
+    background: #E5DADA;
+  }
+
+  .form-submit-button:hover{
+    
+    color:#E5DADA;;
+    box-shadow: inset 250px 0 0 0 #840032;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+  
+  .active {
+    transform: scale(1);
+  }
+  
+  /* */
+  
+  .modal-form {
+    width: 100%;
+    border: solid 1px black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    background:#E5DADA;
+    border: solid 1px black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  
+  .login-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  button {
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .active {
+    transform: scale(1);
+  }
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    pointer-events: all;
+    opacity: 1;
+  }

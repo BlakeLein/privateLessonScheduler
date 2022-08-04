@@ -104,7 +104,7 @@ button{
     padding: 12px 10px;
     outline: none;
     color: whitesmoke;
-    background: linear-gradient(#840032,#E59500);
+   background: linear-gradient(#840032,#E59500); 
     border-radius: 6px;
     cursor: pointer;
     transition: width 0.8s;
