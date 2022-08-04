@@ -205,34 +205,34 @@ deleteButton.addEventListener("click", () => {
   deleteAccount();
 });
 
-// Change Instructor
-const changeInstructor = async () => {
-  const data = {
-    newInstructor: changeInstructorInput.value,
-  };
-  const sendNewInstructor = await fetch(
-    "http://localhost:3000/settings/change-instructor",
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  const json = await sendNewInstructor.json();
-  if (json === "changed student instructor") {
-    alert(
-      "Successfully changed student instructor. You will now be logged out."
-    );
-    logOut();
-  }
-};
+// // Change Instructor
+// const changeInstructor = async () => {
+//   const data = {
+//     newInstructor: changeInstructorInput.value,
+//   };
+//   const sendNewInstructor = await fetch(
+//     "http://localhost:3000/settings/change-instructor",
+//     {
+//       method: "PUT",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(data),
+//     }
+//   );
+//   const json = await sendNewInstructor.json();
+//   if (json === "changed student instructor") {
+//     alert(
+//       "Successfully changed student instructor. You will now be logged out."
+//     );
+//     logOut();
+//   }
+// };
 
-changeInstructorButton.addEventListener("click", () => {
-  console.log("click");
-  // confirm(
-  //   `Are you sure you want to change your instrument to "${changeInstructorInput.value}"?`
-  // );
-  // changeInstructor();
-});
+// changeInstructorButton.addEventListener("click", () => {
+//   console.log("click");
+//   // confirm(
+//   //   `Are you sure you want to change your instructor to "${changeInstructorInput.value}"?`
+//   // );
+//   changeInstructor();
+// });
