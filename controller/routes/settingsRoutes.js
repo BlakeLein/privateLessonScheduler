@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 const es6Renderer = require("express-es6-template-engine");
 
 // Import Models
@@ -55,9 +56,9 @@ router.get("/", checkUser, async (req, res) => {
 });
 
 router.put("/change-username", checkUser, async (req, res) => {
-  console.log(req.session.user);
-
   const { newUsername } = req.body;
+  console.log(newUsername);
+
   try {
     if (req.session.user.instructor) {
       const findStudent = await Students.findOne({
@@ -66,19 +67,21 @@ router.put("/change-username", checkUser, async (req, res) => {
         },
       });
       await findStudent.update({
-        email: newEmail,
+        email: newUsername,
       });
       res.json("changed student email");
     } else if (req.session.user) {
-      const currentEmail = req.session.user.email;
+      console.log(req.session.user.id);
       const findInstructor = await Instructors.findOne({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
+      console.log(findInstructor);
       await findInstructor.update({
-        email: newEmail,
+        email: newUsername,
       });
+
       res.json("changed instructor email");
     }
   } catch (error) {
@@ -88,27 +91,29 @@ router.put("/change-username", checkUser, async (req, res) => {
 
 router.put("/change-password", checkUser, async (req, res) => {
   const { newPassword } = req.body;
+
+  const salt = await bcrypt.genSalt(7);
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
+
   try {
     if (req.session.user.instructor) {
-      const currentPassword = req.session.user.password;
       const findStudent = await Students.findOne({
         where: {
-          id: req.student.id,
+          id: req.session.user.id,
         },
       });
       await findStudent.update({
-        password: newPassword,
+        password: hashedPassword,
       });
       res.json("changed student password");
     } else if (req.session.user) {
-      const currentPassword = req.session.user.password;
       const findInstructor = await Instructors.findOne({
         where: {
-          id: req.student.id,
+          id: req.session.user.id,
         },
       });
       await findInstructor.update({
-        password: newPassword,
+        password: hashedPassword,
       });
       res.json("changed instructor password");
     }
@@ -123,7 +128,7 @@ router.put("/change-instrument", checkUser, async (req, res) => {
     if (req.session.user.instructor) {
       const findStudent = await Students.findOne({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
       await findStudent.update({
@@ -133,7 +138,7 @@ router.put("/change-instrument", checkUser, async (req, res) => {
     } else if (req.session.user) {
       const findInstructor = await Instructors.findOne({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
       await findInstructor.update({
@@ -147,34 +152,35 @@ router.put("/change-instrument", checkUser, async (req, res) => {
 });
 
 router.put("/change-instructor", checkUser, async (req, res) => {
-  const { newInstructor } = req.body;
-  try {
-    const findStudent = await Students.findOne({
-      where: {
-        id: req.session.id,
-      },
-    });
-    await findStudent.update({
-      instrument: newInstrument,
-    });
-    res.json("changed student instrument");
-  } catch (error) {
-    res.send(error);
-  }
+  // const { newInstructor } = req.body;
+  // try {
+  //   const findStudent = await Students.findOne({
+  //     where: {
+  //       id: req.session.id,
+  //     },
+  //   });
+  //   await findStudent.update({
+  //     instrument: newInstrument,
+  //   });
+  //   res.json("changed student instrument");
+  // } catch (error) {
+  //   res.send(error);
+  // }
 });
 
 router.delete("/delete-account", checkUser, async (req, res) => {
+  console.log("HIT THIS ROUTE");
   try {
     if (req.session.user.instructor) {
       const deleteStudent = await Students.destroy({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
     } else if (req.session.user) {
       const deleteInstructor = await Instructors.destroy({
         where: {
-          id: req.session.id,
+          id: req.session.user.id,
         },
       });
     }

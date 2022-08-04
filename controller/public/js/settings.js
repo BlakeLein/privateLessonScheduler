@@ -15,7 +15,7 @@ const changeInstructorInput = document.getElementById(
   "change-instructor-input"
 );
 
-const deleteButton = document.getElementById("delete-account");
+const signOutButton = document.getElementById("sign-out-btn");
 
 // Logout Functionality
 const logOut = async () => {
@@ -31,6 +31,10 @@ const logOut = async () => {
     window.location.href = "/home";
   }
 };
+
+signOutButton.addEventListener("click", () => {
+  logOut();
+});
 
 // Change Username
 const changeUsername = async () => {
@@ -59,6 +63,7 @@ const changeUsername = async () => {
 };
 
 changeUserButton.addEventListener("click", () => {
+  console.log("click");
   confirm(
     `Are you sure you want to change your username to "${changeUserInput.value}"?`
   );
@@ -94,7 +99,8 @@ const changePassword = async () => {
 };
 
 changePasswordButton.addEventListener("click", () => {
-  confirm(`Are you sure you want to change your password?`);
+  console.log("click");
+  // confirm(`Are you sure you want to change your password?`);
   changePassword();
 });
 
@@ -166,10 +172,37 @@ const changeInstrument = async () => {
 };
 
 changeInstrumentButton.addEventListener("click", () => {
+  console.log("click");
   confirm(
     `Are you sure you want to change your instrument to "${changeInstrumentInput.value}"?`
   );
   changeInstrument();
+});
+
+// Delete Account
+const deleteButton = document.getElementById("delete-account");
+
+const deleteAccount = async () => {
+  const deleteThisAccount = await fetch(
+    "http://localhost:3000/settings/delete-account",
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  const json = await deleteThisAccount.json();
+  if (json === "account deleted") {
+    alert("Successfully deleted account. You will now be logged out.");
+    logOut();
+  }
+};
+
+deleteButton.addEventListener("click", () => {
+  console.log("click");
+  confirm(`Are you sure you want to delete your account?`);
+  deleteAccount();
 });
 
 // Change Instructor
@@ -197,32 +230,9 @@ const changeInstructor = async () => {
 };
 
 changeInstructorButton.addEventListener("click", () => {
-  confirm(
-    `Are you sure you want to change your instrument to "${changeInstructorInput.value}"?`
-  );
-  changeInstructor();
-});
-
-// Delete Account
-const deleteAccount = async () => {
-  const deleteThisAccount = await fetch(
-    "http://localhost:3000/settings/delete-account",
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  const json = await sendNewInstructor.json();
-  if (json === "changed student instructor") {
-    alert("Successfully deleted account. You will now be logged out.");
-    logOut();
-  }
-};
-
-deleteButton.addEventListener("click", () => {
-  confirm(`Are you sure you want to delete your account?`);
-  deleteAccount();
+  console.log("click");
+  // confirm(
+  //   `Are you sure you want to change your instrument to "${changeInstructorInput.value}"?`
+  // );
+  // changeInstructor();
 });
