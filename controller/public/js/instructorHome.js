@@ -13,12 +13,10 @@ const createLessonButton = document.getElementById("create-lesson");
 
 // Functions to open/close modal
 const openModal = () => {
-  // if (modal == null) return;
   modal.classList.add("active");
   overlay.classList.add("active");
 };
 const closeModal = () => {
-  // if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
 };
@@ -46,7 +44,6 @@ something.addEventListener("click", async (e) => {
 
     if (e.target.className === "deleteAvailable") {
       let primaryKey = e.target.id;
-      console.log(e.target.id);
 
       const deletingItem = await fetch(
         `http://localhost:3000/instructor/remove-lesson/${primaryKey}`,
@@ -138,10 +135,10 @@ const getAvailableLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
                 json[i].startTime
               )}</div>
-              <div id="card-stop-time">Start Time: ${getFormattedTime(
+              <div class="card-item" id="card-stop-time">Start Time: ${getFormattedTime(
                 json[i].stopTime
               )}</div>
-              <div id="card-cost">Cost: $${json[i].cost}</div>
+              <div class="card-item" id="card-cost">Cost: $${json[i].cost}</div>
               <button class="deleteAvailable" id="${
                 json[i].id
               }">Delete Lesson</button>
@@ -170,8 +167,6 @@ const getClaimedLessons = async () => {
     }
   );
   const json = await dataWeAreSending.json();
-  console.log(json);
-  console.log(json.lessons);
   let html = "";
 
   for (let students = 0; students < json.length; students++) {
@@ -188,10 +183,12 @@ const getClaimedLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
                 json[students].lessons[l].startTime
               )}</div>
-              <div id="card-stop-time">Start Time: ${getFormattedTime(
+              <div class="card-item" id="card-stop-time">Start Time: ${getFormattedTime(
                 json[students].lessons[l].stopTime
               )}</div>
-              <div id="card-cost">Cost: $${json[students].lessons[l].cost}</div>
+              <div class="card-item" id="card-cost">Cost: $${
+                json[students].lessons[l].cost
+              }</div>
               <div id="card-buttons">
                 <button class="deleteClaimed" id="${
                   json[students].lessons[l].id

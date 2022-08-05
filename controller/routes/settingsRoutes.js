@@ -40,7 +40,6 @@ router.get("/", checkUser, async (req, res) => {
     listOfInstructors.push(getInstructors[i]);
   }
   if (req.session.user.instructor) {
-    // res.render("Ssettings");
     res.render("Ssettings", {
       locals: {
         listOfInstructors,
@@ -48,7 +47,6 @@ router.get("/", checkUser, async (req, res) => {
       },
     });
   } else if (req.session.user) {
-    // res.render("Isettings");
     res.render("Isettings", {
       locals: {
         listOfInstructors,
@@ -77,7 +75,7 @@ router.put("/change-username", checkUser, async (req, res) => {
           id: req.session.user.id,
         },
       });
-      console.log(findInstructor);
+
       await findInstructor.update({
         email: newUsername,
       });
@@ -169,7 +167,6 @@ router.put("/change-instructor", checkUser, async (req, res) => {
 });
 
 router.delete("/delete-account", checkUser, async (req, res) => {
-  console.log("HIT THIS ROUTE");
   try {
     if (req.session.user.instructor) {
       const deleteStudent = await Students.destroy({

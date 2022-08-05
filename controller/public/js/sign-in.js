@@ -19,10 +19,12 @@ const sendStudentData = async () => {
     }
   );
   const json = await dataWeAreSending.json();
-  if (json.message == "please enter username and password") {
+  if (json.message == "Please enter username and password.") {
     alert("Please enter a Username and Password");
+  } else if (json.message == "That username is incorrect.") {
+    alert("Please enter a registered username.");
   } else if (json.message == "That password is incorrect.") {
-    alert("Incorrect email and/or password.");
+    alert("Incorrect password.");
   } else {
     window.location.href = "/student/home";
   }
@@ -44,10 +46,12 @@ const sendInstructorData = async () => {
     }
   );
   const json = await dataWeAreSending.json();
-  if (json.message == "please enter username and password") {
+  if (json.message == "Please enter username and password.") {
     alert("Please enter a Username and Password");
+  } else if (json.message == "That username is incorrect.") {
+    alert("Please enter a registered username.");
   } else if (json.message == "That password is incorrect.") {
-    alert("Incorrect email and/or password.");
+    alert("Incorrect password.");
   } else {
     window.location.href = "/instructor/home";
   }

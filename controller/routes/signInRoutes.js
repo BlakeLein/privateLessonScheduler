@@ -36,11 +36,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/student-sign-in", async (req, res) => {
-  console.log(req.session);
   const { user, pass } = req.body;
   if (!req.body.user || !req.body.pass) {
     res.status(400).json({
-      message: "please enter username and password",
+      message: "Please enter username and password.",
     });
   }
   try {
@@ -49,20 +48,23 @@ router.post("/student-sign-in", async (req, res) => {
         email: req.body.user,
       },
     });
-    const userWeFound = studentUser.dataValues;
-    const validPassword = await bcrypt.compare(pass, userWeFound.password);
-    if (!validPassword) {
-      res.status(400).json({
-        message: "That password is incorrect.",
-      });
+    if (!studentUser) {
+      res.status(400).json({ message: "That username is incorrect." });
     } else {
-      req.session.user = userWeFound;
-      console.log(userWeFound);
-      res.json({
-        message: "Login Success",
-        user: userWeFound,
-      });
-      res.status(200);
+      const userWeFound = studentUser.dataValues;
+      const validPassword = await bcrypt.compare(pass, userWeFound.password);
+      if (!validPassword) {
+        res.status(400).json({
+          message: "That password is incorrect.",
+        });
+      } else {
+        req.session.user = userWeFound;
+        res.json({
+          message: "Login Success",
+          user: userWeFound,
+        });
+        res.status(200);
+      }
     }
   } catch (error) {
     res.send(error.message);
@@ -70,11 +72,10 @@ router.post("/student-sign-in", async (req, res) => {
 });
 
 router.post("/instructor-sign-in", async (req, res) => {
-  // console.log(req.session);
   const { user, pass } = req.body;
   if (!req.body.user || !req.body.pass) {
     res.status(400).json({
-      message: "please enter username and password",
+      message: "Please enter username and password.",
     });
   }
   try {
@@ -83,19 +84,23 @@ router.post("/instructor-sign-in", async (req, res) => {
         email: req.body.user,
       },
     });
-    const userWeFound = instructorUser.dataValues;
-    const validPassword = await bcrypt.compare(pass, userWeFound.password);
-    if (!validPassword) {
-      res.status(400).json({
-        message: "That password is incorrect.",
-      });
+    if (!instructorUser) {
+      res.status(400).json({ message: "That username is incorrect." });
     } else {
-      req.session.user = instructorUser;
-      res.json({
-        message: "Login Success",
-        user: userWeFound,
-      });
-      res.status(200);
+      const userWeFound = instructorUser.dataValues;
+      const validPassword = await bcrypt.compare(pass, userWeFound.password);
+      if (!validPassword) {
+        res.status(400).json({
+          message: "That password is incorrect.",
+        });
+      } else {
+        req.session.user = instructorUser;
+        res.json({
+          message: "Login Success",
+          user: userWeFound,
+        });
+        res.status(200);
+      }
     }
   } catch (error) {
     res.send(error);
@@ -104,11 +109,9 @@ router.post("/instructor-sign-in", async (req, res) => {
 
 router.post("/logout", (req, res) => {
   req.session.user = null;
-  console.log(req.session.user);
   res.json({
     message: "Logout Success",
   });
-  console.log(res.json.message);
 });
 
 module.exports = router;

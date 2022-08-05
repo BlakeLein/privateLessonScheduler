@@ -25,11 +25,8 @@ const checkStudentLogin = (req, res, next) => {
 };
 
 // Routes
-
-router.get("/home", (req, res) => {
-  console.log(req.session.user.firstName);
+router.get("/home", checkStudentLogin, (req, res) => {
   const getUserName = req.session.user.firstName;
-  // res.render("studentHome");
   res.render("studentHome", {
     locals: {
       getUserName,
@@ -49,7 +46,6 @@ router.post("/lessons-from-instructor", async (req, res) => {
     },
   });
   const foundInstructorId = findInstructor.id;
-  // console.log(foundInstructorId);
 
   const showAvailableLessons = await Lessons.findAll({
     where: {
@@ -57,25 +53,24 @@ router.post("/lessons-from-instructor", async (req, res) => {
       available: true,
     },
   });
-  // console.log(showAvailableLessons);
   res.json(showAvailableLessons);
 });
 
 router.post("/view-my-lessons", async (req, res) => {
   const studentId = req.session.user.id;
-
+  const instructor = req.session.user.instructor;
   const findMyLessons = await Lessons.findAll({
     where: {
       studentId: studentId,
     },
   });
-  console.log(findMyLessons);
-  res.json(findMyLessons);
+  res.json({
+    findMyLessons: findMyLessons,
+    instructor: instructor,
+  });
 });
 
-router.put("/claim-lesson/:id", async (req, res) => {
-  console.log("Hit this route");
-  console.log(req.params.id);
+router.put("/claim-lesson/:id", checkStudentLogin, async (req, res) => {
   const id = req.params.id;
   const claimLesson = await Lessons.findOne({
     where: {
@@ -93,8 +88,7 @@ router.put("/claim-lesson/:id", async (req, res) => {
   }
 });
 
-router.put("/cancel-lesson/:id", async (req, res) => {
-  console.log(req.params.id);
+router.put("/cancel-lesson/:id", checkStudentLogin, async (req, res) => {
   const id = req.params.id;
   const cancelLesson = await Lessons.findOne({
     where: {

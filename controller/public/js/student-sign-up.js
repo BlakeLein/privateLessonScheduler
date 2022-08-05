@@ -39,10 +39,6 @@ const listOfInstruments = [
   "Vocal - Bass",
 ];
 
-// message: "please enter username and password"
-// message: "That password is incorrect."
-// message: "Login Success",
-
 // Send Info to Routes
 // Functiomn to Send Data to create-student-user route
 const sendStudentData = async () => {
@@ -64,11 +60,11 @@ const sendStudentData = async () => {
       body: JSON.stringify(data),
     }
   );
-  
+
   const json = await dataWeAreSending.json();
-  if (json.message != "Account Created"){
-  window.location.href= "/signup/student"}
-  else{
+  if (json.message != "Account Created") {
+    window.location.href = "/signup/student";
+  } else {
     alert("Account successfully created!");
     window.location.href = "/signin";
   }
@@ -83,7 +79,6 @@ const checkPasswords = (pass1, pass2) => {
 
 // Submit button
 form.addEventListener("submit", (e) => {
-  console.log("Click Worked");
   if (checkPasswords(password1, password2) == true) {
     e.preventDefault();
     sendStudentData();
