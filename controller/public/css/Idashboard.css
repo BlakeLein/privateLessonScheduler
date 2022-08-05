@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap%27');
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +7,8 @@
   border: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+
 }
 body {
   background: linear-gradient(#840032, #e5dada);
@@ -63,6 +64,10 @@ nav .material-symbols-outlined {
   position: relative;
   top: 12px;
   margin-left: 10px;
+  color:#02040F
+}
+.nav-item:hover{
+  color: #002642;
 }
 a:hover{
     color: #002642;
@@ -88,7 +93,7 @@ a:hover{
 }
 #card-title {
   text-align: center;
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px #02040F;
 
 }
 #card-date{
@@ -149,7 +154,7 @@ li {
 li button {
   position: relative;
   color: rgb(85, 83, 83);
-  font-size: 21px;
+  font-size: 18px;
   display: table;
   background: #e5dada;
 }
@@ -179,7 +184,7 @@ li button:hover{
   right: 15%;
   bottom: 15%;
   top: 15%;
-  border: solid 1px black;
+  border: solid 1px #02040F;
   border-radius: 10px;
   transform: scale(0);
   z-index: 10;
@@ -299,7 +304,7 @@ li button:hover{
   
   .modal-form {
     width: 100%;
-    border: solid 1px black;
+    border: solid 1px #02040F;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -308,7 +313,7 @@ li button:hover{
   
   label {
     background:#E5DADA;
-    border: solid 1px black;
+    border: solid 1px #02040F;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -427,7 +432,7 @@ li button:hover{
 }
 
 .login-text{
-  font-size: 22px;
+  font-size: 20px;
   position: relative;
   width: 100%;
   color: whitesmoke;
@@ -448,6 +453,7 @@ li button:hover{
     margin: 0 0 15px 0;
     font-size: 30px;
     font-weight: 700;
+    color: #02040F;
   }
   .login-form label{
     margin: 10px 10px 10px 0;
