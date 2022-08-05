@@ -93,6 +93,26 @@ something.addEventListener("click", async (e) => {
   }
 });
 
+const getFormattedDate = (date) => {
+  const splitDate = date.split("-");
+  const year = splitDate[0];
+  const month = splitDate[1];
+  const day = splitDate[2];
+  const formattedDate = `${month}/${day}/${year}`;
+  return formattedDate;
+};
+const getFormattedTime = (time) => {
+  const splitTime = time.split(":");
+  if (splitTime[0] > "12") {
+    const newTime = splitTime[0] - 12;
+    const formattedTime = `${newTime}:${splitTime[1]} PM`;
+    return formattedTime;
+  } else {
+    const formattedTime = `${splitTime[0]}:${splitTime[1]} AM`;
+    return formattedTime;
+  }
+};
+
 const getAvailableLessons = async () => {
   const dataWeAreSending = await fetch(
     "http://localhost:3000/instructor/populate-lessons",
@@ -110,12 +130,21 @@ const getAvailableLessons = async () => {
   for (let i = 0; i < json.length; i++) {
     html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-title">Available Lesson</div>
             <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
-              <div id="card-cost">Cost: ${json[i].cost}</div>
-              <button class="deleteAvailable" id="${json[i].id}">Delete Lesson</button>
+            <div class="card-item" id="card-date">Date: ${getFormattedDate(
+              json[i].date
+            )}</div>
+              <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
+                json[i].startTime
+              )}</div>
+              <div id="card-stop-time">Start Time: ${getFormattedTime(
+                json[i].stopTime
+              )}</div>
+              <div id="card-cost">Cost: $${json[i].cost}</div>
+              <button class="deleteAvailable" id="${
+                json[i].id
+              }">Delete Lesson</button>
             </div>
           </div>
   `;
@@ -149,15 +178,27 @@ const getClaimedLessons = async () => {
     for (let l = 0; l < json[students].lessons.length; l++) {
       html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[students].lessons[l].date}</div>
+            <div id="card-title">Lesson with ${json[students].firstName} ${
+        json[students].lastName
+      }</div>
             <div id="card-body">
-            <div id="student-name">Lesson with ${json[students].firstName} ${json[students].lastName}</div>
-              <div class="card-item" id="card-start-time">Start Time: ${json[students].lessons[l].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[students].lessons[l].stopTime}</div>
-              <div id="card-cost">Cost: ${json[students].lessons[l].cost}</div>
+            <div class="card-item" id="card-date">Date: ${getFormattedDate(
+              json[students].lessons[l].date
+            )}</div>
+              <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
+                json[students].lessons[l].startTime
+              )}</div>
+              <div id="card-stop-time">Start Time: ${getFormattedTime(
+                json[students].lessons[l].stopTime
+              )}</div>
+              <div id="card-cost">Cost: $${json[students].lessons[l].cost}</div>
               <div id="card-buttons">
-                <button class="deleteClaimed" id="${json[students].lessons[l].id}">Delete Lesson</button>
-                <button class="removeStudent" id="${json[students].lessons[l].id}">Remove Student</button>
+                <button class="deleteClaimed" id="${
+                  json[students].lessons[l].id
+                }">Delete Lesson</button>
+                <button class="removeStudent" id="${
+                  json[students].lessons[l].id
+                }">Remove Student</button>
               </div>
             </div>
           </div>
