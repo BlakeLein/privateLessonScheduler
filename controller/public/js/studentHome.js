@@ -123,22 +123,24 @@ const viewMyLessons = async () => {
   console.log(json);
   let html = "";
 
-  for (let i = 0; i < json.length; i++) {
+  for (let i = 0; i < json.findMyLessons.length; i++) {
     html += `
             <div id="sample-card">
-            <div id="card-title">Lesson with Your Instructor</div>
+            <div id="card-title">Lesson with ${json.instructor}</div>
             <div id="card-body">
             <div class="card-item" id="card-date">Date: ${getFormattedDate(
-              json[i].date
+              json.findMyLessons[i].date
             )}</div>
               <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
-                json[i].startTime
+                json.findMyLessons[i].startTime
               )}</div>
               <div id="card-stop-time">Start Time: ${getFormattedTime(
-                json[i].stopTime
+                json.findMyLessons[i].stopTime
               )}</div>
-              <div id="card-cost">Cost: $${json[i].cost}</div>
-              <button class="cancel" id="${json[i].id}">Cancel Lesson</button>
+              <div id="card-cost">Cost: $${json.findMyLessons[i].cost}</div>
+              <button class="cancel" id="${
+                json.findMyLessons[i].id
+              }">Cancel Lesson</button>
             </div>
           </div>
   `;

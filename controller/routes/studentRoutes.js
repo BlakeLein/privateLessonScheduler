@@ -63,14 +63,16 @@ router.post("/lessons-from-instructor", async (req, res) => {
 
 router.post("/view-my-lessons", async (req, res) => {
   const studentId = req.session.user.id;
-
+  const instructor = req.session.user.instructor;
   const findMyLessons = await Lessons.findAll({
     where: {
       studentId: studentId,
     },
   });
-  console.log(findMyLessons);
-  res.json(findMyLessons);
+  res.json({
+    findMyLessons: findMyLessons,
+    instructor: instructor,
+  });
 });
 
 router.put("/claim-lesson/:id", async (req, res) => {

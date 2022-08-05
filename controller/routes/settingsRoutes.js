@@ -152,6 +152,7 @@ router.put("/change-instrument", checkUser, async (req, res) => {
 });
 
 router.put("/change-instructor", checkUser, async (req, res) => {
+  console.log("Hit the route");
   const { newInstructor } = req.body;
   try {
     const findStudent = await Students.findOne({
@@ -169,7 +170,6 @@ router.put("/change-instructor", checkUser, async (req, res) => {
 });
 
 router.delete("/delete-account", checkUser, async (req, res) => {
-  console.log("HIT THIS ROUTE");
   try {
     if (req.session.user.instructor) {
       const deleteStudent = await Students.destroy({
