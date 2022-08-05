@@ -14,7 +14,7 @@ body{
     background: #E5DADA;
 }
 .navbar{
-    background: rgb(99, 100, 103);
+    background: #002642;
     padding-left: 8%;
     padding-right: 8%;
     width: 100%;
@@ -25,25 +25,14 @@ body{
     padding: 10px;
     font-size: 30px;
     padding-top: 25px;
-    color: #E5DADA;
+    color: whitesmoke
 }
 .navbar a{
     font-size: large;
     font-weight: 600;
-    color: #E5DADA;
+    color: whitesmoke
 }
-.navbar ul li::after{
-content: '';
-width: 0%;
-height: 2px;
-background: #840032;
-display: block;
-margin: auto;
-transition: 0.5s;
-}
-.navbar ul li:hover::after{
-width: 100%;
-}
+
 .logo{
     height: 100px;
     width: 100px;
@@ -238,4 +227,73 @@ nav ul li a:hover{
 #signUp-btn:hover{
     color: #E5DADA;
     box-shadow: inset 650px 0 0 0 #840032;
+}
+@media(max-width:1000px){
+    .row{
+        margin: 10px;
+    }
+    .logo{
+        display: none;
+    }
+    .navbar{ 
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+    .navbar{
+        display: block;
+    }
+    nav ul li{
+        text-align: left;
+        margin-right: 3px;
+        margin-top: 10px;
+    }
+    .navbar ul li::after{
+        content: '';
+        width: 0%;
+        height: 0px;
+        background: #E5DADA;
+        display: initial;
+        margin: auto;
+        transition: 0.5s;
+        }
+    nav ul li:hover{
+        text-decoration: underline;
+    }
+    .navbar h2{
+        text-align: center;
+        font-size: 40px;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+    }
+    .col-2{
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    .col-1 h2{
+        font-size: 28px;
+    }
+    .col-1 h3{
+        font-size: 20px;
+    }
+    .nav-list{
+        display: flex;
+        flex-direction: column;
+    }
+    .col-2 .instrument{
+        width: 90%;
+        height:40vh;
+        background-color: transparent;
+    }
+    .color-box{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: linear-gradient(#840032,#E59500);
+        border-radius: 20px;
+        height: 100%;
+        width: 80%;
+        z-index: -1;
+    }
 }
