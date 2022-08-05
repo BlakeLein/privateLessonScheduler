@@ -79,7 +79,7 @@ a:hover{
 
 #sample-card{
     max-width: 350px;
-    max-height: 150px;
+    height: auto;
     margin: 10px;
     background: #E5DADA;
     text-align: center;
@@ -91,6 +91,15 @@ a:hover{
 #card-title {
 text-align: center;
 border-bottom: solid 1px black;
+}
+
+#card-title {
+    text-align: center;
+    border-bottom: solid 1px black;
+}
+#card-date{
+    font-weight: 800;
+    color:#840032;
 }
 
 .card h3{
@@ -337,6 +346,9 @@ li button:hover{
     color: whitesmoke;
     box-shadow: inset 250px 0 0 0 #002642;
 }
+.main-container h1{
+    color: #E5DADA;
+}
 
 @media(max-width:1000px){
     
@@ -380,4 +392,36 @@ li button:hover{
     #modal-title{
         font-size: 15px;
     }
+    }
+
+    @media(max-height:950px){
+        .userTitle{
+            font-size: 20px;
+            margin: 10px;
+        }
+        .studentSettings-container{
+            justify-content:initial
+            }
+        .login-container{
+                flex-direction: column;
+                box-shadow: none;
+            }
+        
+        .signIn-col-left,
+        .signIn-col-right{
+        width: 100%;
+        margin:0;
+        clip-path:none;
+        padding:10px;
+        }
+        .signIn-col-left{
+            background: #840032;
+        }
+        .signIn-col-right h2{
+            display: none;
+        }
+        .login-form input{
+            margin: 5px 10px;
+            height: 25px;
+        }
     }
