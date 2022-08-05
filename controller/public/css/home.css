@@ -161,3 +161,65 @@ button:hover{
     width: 80%;
     z-index: -1;
 }
+
+.icon{
+    display: none;
+}
+@media(max-width:1000px){
+    .row{
+        display: flex;
+        flex-direction: column;
+    }
+    .col-2{
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+    .col-1 h2{
+        font-size: 32px;
+    }
+    .nav-list{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .topnav {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    /* Hide the links inside the navigation menu (except for logo/home) */
+    .topnav #myLinks {
+    display: none;
+    }
+    
+    /* Style navigation menu links */
+    .topnav a {
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    }
+    
+    /* Style the hamburger menu */
+    .topnav a.icon {
+    color: #000;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 76px;
+    }
+    
+    /* Add a grey background color on mouse-over */
+    .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+    
+    /* Style the active link (or home/logo) */
+    .active {
+    background-color: #04AA6D;
+    color: white;
+    }
+}

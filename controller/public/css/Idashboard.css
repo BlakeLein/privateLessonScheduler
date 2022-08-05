@@ -77,9 +77,10 @@ a:hover{
 }
 
 #sample-card {
-  width: 100%;
+  max-width: 350px;
+  max-height: 150px;
   margin: 10px;
-  background: #e5dada;
+  background: #E5DADA;
   text-align: center;
   border-radius: 20px;
   padding: 10px;
@@ -159,7 +160,7 @@ li button:hover{
 #something {
   padding-inline-start: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 350px));
   grid-gap: 20px;
   padding: 20px;
 }
@@ -418,53 +419,36 @@ li button:hover{
     margin-left: -10px;
 }
 
-@media(max-width:600px){
-    .login-container{
-        flex-direction: column;
-        box-shadow: none;
-    }
-    .signIn-col-left,
-    .signIn-col-right{
-    width: 100%;
-    margin:0;
-    clip-path:none
-}
-    .signIn-col-right{
-        padding:30px;
-        padding-bottom: 10px;
-        background: #E5DADA;
-    }
-}
 .login-text{
-    font-size: 22px;
-    position: relative;
-    width: 100%;
-    color: whitesmoke;
+  font-size: 22px;
+  position: relative;
+  width: 100%;
+  color: whitesmoke;
 }
 
 .login-text h2{
     margin: 0 0 15px 0;
     font-size: 33px;
     font-weight: 700;
-}
-
-
-.login-form{
+  }
+  
+  
+  .login-form{
     position: relative;
     width: 100%;
-}
-.login-form h2{
+  }
+  .login-form h2{
     margin: 0 0 15px 0;
     font-size: 30px;
     font-weight: 700;
-}
-.login-form label{
+  }
+  .login-form label{
     margin: 10px 10px 10px 0;
     text-align: left;
     color: #666666;
     font-size: 18px;
-}
-.login-form input{
+  }
+  .login-form input{
     margin: 10px 10px 10px 0;
     text-align: left;
     color: #666666;
@@ -476,8 +460,8 @@ li button:hover{
     outline:none;
     border: 1px solid whitesmoke;
     border-radius: 30px;
-}
-.login-form select{
+  }
+  .login-form select{
     margin: 10px 0;
     display: block;
     width: 100%;
@@ -486,13 +470,13 @@ li button:hover{
     outline:none;
     border: 1px solid whitesmoke;
     border-radius: 30px;
-}
-
-.login-form input:focus{
+  }
+  
+  .login-form input:focus{
     border-color: #840032;
-
-}
-#delete-account{
+    
+  }
+  #delete-account{
     margin-top: 10px;
     width: 50%;
     font-size: 16px;
@@ -506,9 +490,50 @@ li button:hover{
     border: 1px solid #002642;
     box-shadow: inset 0 0 0 0 #002642;
     transition: .5s;
-}
-
-#delete-account:hover{
+  }
+  
+  #delete-account:hover{
     color: whitesmoke;
     box-shadow: inset 250px 0 0 0 #840032;
+  }
+  
+  @media(max-width:600px){
+      .login-container{
+          flex-direction: column;
+          box-shadow: none;
+      }
+      .signIn-col-left,
+      .signIn-col-right{
+      width: 100%;
+      margin:0;
+      clip-path:none
+  }
+      .signIn-col-right{
+          padding:30px;
+          padding-bottom: 10px;
+          background: #E5DADA;
+      }
+}
+
+
+      @media(max-width:770px){
+    nav{
+      background: transparent;
+      width: 100px;
+      transition: .5s;
+    }
+    .nav-item{
+      display: none;
+      transition: .5s;
+    }
+    li button{
+      background: transparent;
+      transition: .5s;
+    }
+    span{
+      color: #E5DADA;
+    };
+    #modal-title{
+      font-size: 15px;
+    }
 }

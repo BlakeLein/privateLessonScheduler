@@ -78,7 +78,8 @@ a:hover{
 }
 
 #sample-card{
-    width: 100%;
+    max-width: 350px;
+    max-height: 150px;
     margin: 10px;
     background: #E5DADA;
     text-align: center;
@@ -163,7 +164,7 @@ li button:hover{
 #something{
     padding-inline-start: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 350px));
     grid-gap: 20px;
     padding: 20px;
 }
@@ -337,7 +338,11 @@ li button:hover{
     box-shadow: inset 250px 0 0 0 #002642;
 }
 
-@media(max-width:600px){
+@media(max-width:1000px){
+    
+.studentSettings-container{
+    justify-content:initial
+    }
 .login-container{
         flex-direction: column;
         box-shadow: none;
@@ -354,3 +359,25 @@ li button:hover{
         background: #E5DADA;
     }
 }
+
+@media(max-width:1000px){
+    nav{
+        background: transparent;
+        width: 100px;
+        transition: .5s;
+    }
+    .nav-item{
+        display: none;
+        transition: .5s;
+    }
+    li button{
+        background: transparent;
+        transition: .5s;
+    }
+    span{
+        color: #E5DADA;
+    };
+    #modal-title{
+        font-size: 15px;
+    }
+    }
