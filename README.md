@@ -1,6 +1,6 @@
  <div align="center">
 
-  <img src="src\assets\readme\logo.png" alt="logo" width="200" height="auto" />
+  <img src="" alt="logo" width="200" height="auto" />
 
   <p>
     Welcome to Musicaly: A Private Lesson App
@@ -58,6 +58,10 @@
   </ul>
 </details>
 
+
+
+
+
 <!-- Features -->
 
 ### Features
@@ -71,9 +75,14 @@
 
 <!-- Color Reference -->
 
-### Color Reference
+### Color Reference & Styles
 
 <a href="https://coolors.co/002642-840032-e59500-e5dada-02040f">Coolors</a>
+- <span style="color:#840032">#840032</span>.
+- <span style="color:#002642">#002642</span>.
+- <span style="color:#E59500">#E59500</span>.
+- <span style="color:#E5DADA">#E5DADA</span>.
+- <span style="color:#02040F">#02040F</span>.
 
 <!-- Env Variables -->
 
@@ -107,13 +116,13 @@ Sequelize
 Install dependencies
 
 ```bash
-  npm install
+  npm i
 ```
 
 Start the server
 
 ```bash
-    cd controller
+  cd controller
   nodemon
 ```
 
@@ -125,57 +134,118 @@ Users fill out a form to sign up, the contents of the form get sent to our datab
 
 <details>
   <summary>Sign Up Page</summary>
-  <div align="center"> 
-<img style="width: 400px" src="src\assets\readme\signup.PNG"/>
-</div>
+<img alt="mobiledash"width = "400px" src="/controller/public/mobileDash.jpg"/>
 </details>
 
 ```javascript
-
+router.post("/create-instructor-user", async (req, res) => {
+  const { first, last, email, password, instrument } = req.body;
+  try {
+    const salt = await bcrypt.genSalt(7);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const encryptedUser = {
+      firstName: first,
+      lastName: last,
+      email: email,
+      password: hashedPassword,
+      instrument: instrument,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    const createUser = await Instructors.create(encryptedUser);
+    res.json({
+      message: "Account Created",
+    });
+    res.status(200);
+  } catch (error) {
+    res.send(error.message);
+  }
+});
 ```
 When Users sign in thier credentials are checked in our database.
 <details>
   <summary>Sign-in</summary>
   <div align="center"> 
-<img style="width: 550px" src="src\assets\readme\createParty.PNG"/>
+<img style="width: 550px" src=""/>
 </div>
 </details>
 
 ```javascript
-
+router.post("/instructor-sign-in", async (req, res) => {
+  const { user, pass } = req.body;
+  if (!req.body.user || !req.body.pass) {
+    res.status(400).json({
+      message: "Please enter username and password.",
+    });
+  }
+  try {
+    const instructorUser = await Instructors.findOne({
+      where: {
+        email: req.body.user,
+      },
+    });
+    if (!instructorUser) {
+      res.status(400).json({ message: "That username is incorrect." });
+    } else {
+      const userWeFound = instructorUser.dataValues;
+      const validPassword = await bcrypt.compare(pass, userWeFound.password);
+      if (!validPassword) {
+        res.status(400).json({
+          message: "That password is incorrect.",
+        });
+      } else {
+        req.session.user = instructorUser;
+        res.json({
+          message: "Login Success",
+          user: userWeFound,
+        });
+        res.status(200);
+      }
+    }
+  } catch (error) {
+    res.send(error);
+  }
+});
 ```
 
-From the dashboard users can then view their party, change their avatar, or search for a specidfic party if the party ID is known.
+From the dashboard users can view the lessons that they have scheduled.
 
 <details>
   <summary>Dashboard</summary>
   <div align="center"> 
-<img style="width: 550px" src="src\assets\readme\dashboard.PNG"/>
+<img style="width: 550px" src=""/>
 </div>
 </details>
 
 ```javascript
-
+router.post("/claimed-lessons", async (req, res) => {
+  const showStudentsWithLessons = await Students.findAll({
+    include: {
+      model: Lessons,
+      as: "lessons",
+      where: {
+        instructorId: req.session.user.id,
+      },
+    },
+  });
+  res.json(showStudentsWithLessons);
+});
 ```
 
-The party page displays all the information the user submitted once creating the party, and features a countdown, comment section, guest list, supplies section, and a place for guests to let the host know if they can attend. Hosts have the ability to invite guests or edit the party.
+Each user has a specific dashboard with features unique to the type of user they are. Instructors have more features than students.
 
 <details>
-  <summary>Party Details (Host Point of View)</summary>
+  <summary>Lesson Dashboard (Instructor Point of View)</summary>
   <div align="center"> 
-<img style="width: 550px" src="src\assets\readme\hostView.PNG"/>
+<img style="width: 550px" src=""/>
 </div>
 </details>
 <details>
-  <summary>Party Details (Guest Point of View)</summary>
+  <summary>Lesson Dashbopard (Student Point of View)</summary>
   <div align="center"> 
 <img style="width: 550px" src="src\assets\readme\guestView.PNG"/>
 </div>
 </details>
-
-```javascript
-
-```
 
 <!-- Contributing -->
 
