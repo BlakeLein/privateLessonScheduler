@@ -14,24 +14,6 @@ const { response } = require("express");
 app.use(express.json());
 
 // Check for sessions and account type
-const checkStudentLogin = (req, res, next) => {
-  console.log("We need to get here");
-  console.log(req.session.user.instructor);
-  try {
-    if (req.session.user.instructor) {
-      next();
-    } else {
-      // res.json({
-      //   message: "Login Required",
-      // });
-      res.render("home");
-    }
-  } catch (error) {
-    console.log(error.message);
-    res.send(error.message);
-  }
-};
-
 const checkTeacherLogin = (req, res, next) => {
   try {
     if (!req.session.user.instructor) {
@@ -68,24 +50,9 @@ router.post("/populate-lessons", async (req, res) => {
   }
 
   res.json(listOfLessons);
-  // res.render("instructorHome", {
-  //   locals: {
-  //     listOfLessons,
-  //   },
-  // });
 });
 
 router.post("/claimed-lessons", async (req, res) => {
-  // const instructorFirstName = req.session.user.firstName;
-  // const instructorLastName = req.session.user.lastName;
-
-  // const findMyStudents = await Students.findAll({
-  //   where: {
-  //     instructor: `${instructorFirstName} ${instructorLastName}`,
-  //   },
-  // });
-  // console.log(findMyStudents);
-
   const showStudentsWithLessons = await Students.findAll({
     include: {
       model: Lessons,
@@ -95,12 +62,10 @@ router.post("/claimed-lessons", async (req, res) => {
       },
     },
   });
-  // console.log(showStudentsWithLessons);
   res.json(showStudentsWithLessons);
 });
 
 router.post("/create-lesson", checkTeacherLogin, async (req, res) => {
-  console.log(req.body);
   const { date, start, stop, cost } = req.body;
   try {
     const newLesson = {
@@ -121,15 +86,13 @@ router.post("/create-lesson", checkTeacherLogin, async (req, res) => {
   }
 });
 
-router.delete("/remove-lesson/:id", async (req, res) => {
-  console.log("Is this hitting");
+router.delete("/remove-lesson/:id", checkTeacherLogin, async (req, res) => {
   const id = req.params.id;
   const deleteLesson = await Lessons.destroy({
     where: {
       id: id,
     },
   });
-  console.log(deleteLesson);
 
   if (deleteLesson) {
     res.status(200).send(`deleted lesson ${deleteLesson}`);
@@ -138,8 +101,7 @@ router.delete("/remove-lesson/:id", async (req, res) => {
   }
 });
 
-router.put("/remove-student/:id", async (req, res) => {
-  console.log(req.params.id);
+router.put("/remove-student/:id", checkTeacherLogin, async (req, res) => {
   const id = req.params.id;
   const removeStudent = await Lessons.findOne({
     where: {
@@ -170,12 +132,6 @@ router.get("/get-instructors", async (req, res) => {
   }
 
   res.send(listOfInstructors);
-
-  // res.render("sign-up", {
-  //   locals: {
-  //     listOfInstructors,
-  //   },
-  // });
 });
 
 module.exports = router;

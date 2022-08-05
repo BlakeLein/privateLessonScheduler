@@ -1,14 +1,11 @@
 const something = document.querySelector("#something");
 
 something.addEventListener("click", async (e) => {
-  console.log("Hit this route");
-  console.log(e);
   try {
     e.preventDefault();
 
     if (e.target.className === "claim") {
       let primaryKey = e.target.id;
-      console.log(e.target.id);
 
       const claimingItem = await fetch(
         `http://localhost:3000/student/claim-lesson/${primaryKey}`,
@@ -23,7 +20,6 @@ something.addEventListener("click", async (e) => {
       getLessonsFromInstructor();
     } else if (e.target.className === "cancel") {
       let primaryKey = e.target.id;
-      console.log(e.target.id);
 
       const claimingItem = await fetch(
         `http://localhost:3000/student/cancel-lesson/${primaryKey}`,
@@ -103,7 +99,6 @@ const getLessonsFromInstructor = async () => {
 const veiwAvailableLessons = document.getElementById("view-available");
 
 veiwAvailableLessons.addEventListener("click", () => {
-  console.log("Click");
   getLessonsFromInstructor();
 });
 
@@ -120,7 +115,6 @@ const viewMyLessons = async () => {
   );
   // This json contains an array of objects for all lessons created that is tied to this teacher account
   const json = await dataWeAreSending.json();
-  console.log(json);
   let html = "";
 
   for (let i = 0; i < json.findMyLessons.length; i++) {
@@ -134,10 +128,12 @@ const viewMyLessons = async () => {
               <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
                 json.findMyLessons[i].startTime
               )}</div>
-              <div id="card-stop-time">Start Time: ${getFormattedTime(
+              <div class="card-item" id="card-stop-time">Start Time: ${getFormattedTime(
                 json.findMyLessons[i].stopTime
               )}</div>
-              <div id="card-cost">Cost: $${json.findMyLessons[i].cost}</div>
+              <div class="card-item" id="card-cost">Cost: $${
+                json.findMyLessons[i].cost
+              }</div>
               <button class="cancel" id="${
                 json.findMyLessons[i].id
               }">Cancel Lesson</button>
@@ -150,7 +146,6 @@ const viewMyLessons = async () => {
 const myLessonsButton = document.getElementById("view-my-lessons");
 
 myLessonsButton.addEventListener("click", () => {
-  console.log("Click");
   viewMyLessons();
 });
 
