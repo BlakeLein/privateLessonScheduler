@@ -17,7 +17,7 @@
     <div class="dash-container">
       <nav>
           <ul>
-              <li><a href="" class =logo>
+              <li><a href="/instructor/home" class =logo>
                   <img src="../images/music icon.png" alt="">
                   <span class="nav-item">Musicly Instructor</span>
               </a></li>
@@ -39,13 +39,15 @@
 
 
     <section class="InstructorSettings-container">
-      <h1>SETTINGS FOR</h1>
+      <h1 class ="userTitle">SETTINGS FOR ${getUserName}</h1>
         <div class="login-container">
           <div class="signIn-col-left">
             <div class="login-text">
               <h2>Settings</h2>
               <br>
-              <h5>Change your information here</h5>
+              <h5>Change your account information here.</h5>
+              <br>
+              <h5>Making a change will log you out.</h5>
             </div>
           </div>
             <div class="signIn-col-right">
@@ -57,7 +59,8 @@
                       <button id="change-email">Change</button></label>
                     <label>Change Password
                       <input type="text" id="change-password-input">
-                      <button id="change-password">Change</button></label>
+                      <button id="change-password">Change</button>
+                    </label>
                     <label>Change My Instrument
                       <select type="text" id="change-instrument-input">
                       <option value="" disabled selected hidden>
@@ -66,11 +69,6 @@
                       </select>
                 <button id="change-instrument">Change</button></label>
                   <button id="delete-account">Delete Account</button>
-                    <div id="display-container">
-                      <div class="inner-container" id="available-lessons">
-                        <ul id="something"></ul>
-                      </div>
-                    </div>
                   </form>
               </div>
           </div>
