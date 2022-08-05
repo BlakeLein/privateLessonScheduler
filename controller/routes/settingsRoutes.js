@@ -40,7 +40,6 @@ router.get("/", checkUser, async (req, res) => {
     listOfInstructors.push(getInstructors[i]);
   }
   if (req.session.user.instructor) {
-    // res.render("Ssettings");
     res.render("Ssettings", {
       locals: {
         listOfInstructors,
@@ -48,7 +47,6 @@ router.get("/", checkUser, async (req, res) => {
       },
     });
   } else if (req.session.user) {
-    // res.render("Isettings");
     res.render("Isettings", {
       locals: {
         listOfInstructors,
@@ -77,7 +75,7 @@ router.put("/change-username", checkUser, async (req, res) => {
           id: req.session.user.id,
         },
       });
-      console.log(findInstructor);
+
       await findInstructor.update({
         email: newUsername,
       });
@@ -152,7 +150,6 @@ router.put("/change-instrument", checkUser, async (req, res) => {
 });
 
 router.put("/change-instructor", checkUser, async (req, res) => {
-  console.log("Hit the route");
   const { newInstructor } = req.body;
   try {
     const findStudent = await Students.findOne({

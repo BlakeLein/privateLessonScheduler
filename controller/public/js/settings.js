@@ -41,7 +41,6 @@ const changeUsername = async () => {
   const data = {
     newUsername: changeUserInput.value,
   };
-  console.log(data);
   const sendNewUsername = await fetch(
     "http://localhost:3000/settings/change-username",
     {
@@ -63,7 +62,6 @@ const changeUsername = async () => {
 };
 
 changeUserButton.addEventListener("click", () => {
-  console.log("click");
   if (
     confirm(
       `Are you sure you want to change your username to "${changeUserInput.value}"?`
@@ -78,7 +76,6 @@ const changePassword = async () => {
   const data = {
     newPassword: changePasswordInput.value,
   };
-  console.log(data);
   const sendNewPassword = await fetch(
     "http://localhost:3000/settings/change-password",
     {
@@ -102,7 +99,6 @@ const changePassword = async () => {
 };
 
 changePasswordButton.addEventListener("click", () => {
-  console.log("click");
   if (confirm(`Are you sure you want to change your password?`)) {
     changePassword();
   }
@@ -176,7 +172,6 @@ const changeInstrument = async () => {
 };
 
 changeInstrumentButton.addEventListener("click", () => {
-  console.log("click");
   if (
     confirm(
       `Are you sure you want to change your instrument to "${changeInstrumentInput.value}"?`
@@ -207,7 +202,6 @@ const deleteAccount = async () => {
 };
 
 deleteButton.addEventListener("click", () => {
-  console.log("click");
   if (confirm(`Are you sure you want to delete your account?`)) {
     deleteAccount();
   }
@@ -238,7 +232,6 @@ const changeInstructor = async () => {
 };
 
 changeInstructorButton.addEventListener("click", () => {
-  console.log("click");
   if (
     confirm(
       `Are you sure you want to change your instructor to "${changeInstructorInput.value}"?`
