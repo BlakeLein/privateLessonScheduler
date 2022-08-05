@@ -42,6 +42,26 @@ something.addEventListener("click", async (e) => {
   }
 });
 
+const getFormattedDate = (date) => {
+  const splitDate = date.split("-");
+  const year = splitDate[0];
+  const month = splitDate[1];
+  const day = splitDate[2];
+  const formattedDate = `${month}/${day}/${year}`;
+  return formattedDate;
+};
+const getFormattedTime = (time) => {
+  const splitTime = time.split(":");
+  if (splitTime[0] > "12") {
+    const newTime = splitTime[0] - 12;
+    const formattedTime = `${newTime}:${splitTime[1]} PM`;
+    return formattedTime;
+  } else {
+    const formattedTime = `${splitTime[0]}:${splitTime[1]} AM`;
+    return formattedTime;
+  }
+};
+
 // Route/Function to get lessons that are available
 const getLessonsFromInstructor = async () => {
   const dataWeAreSending = await fetch(
@@ -61,11 +81,18 @@ const getLessonsFromInstructor = async () => {
   for (let i = 0; i < json.length; i++) {
     html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-title">Available Lesson</div>
             <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
-              <div id="card-cost">Cost: ${json[i].cost}</div>
+            <div class="card-item" id="card-date" >Date: ${getFormattedDate(
+              json[i].date
+            )}</div>
+              <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
+                json[i].startTime
+              )}</div>
+              <div id="card-stop-time">Start Time: ${getFormattedTime(
+                json[i].stopTime
+              )}</div>
+              <div id="card-cost">Cost: $${json[i].cost}</div>
               <button class="claim" id="${json[i].id}">Claim Lesson</button>
             </div>
           </div>
@@ -99,11 +126,18 @@ const viewMyLessons = async () => {
   for (let i = 0; i < json.length; i++) {
     html += `
             <div id="sample-card">
-            <div id="card-title">Date: ${json[i].date}</div>
+            <div id="card-title">Lesson with Your Instructor</div>
             <div id="card-body">
-              <div class="card-item" id="card-start-time">Start Time: ${json[i].startTime}</div>
-              <div id="card-stop-time">Start Time: ${json[i].stopTime}</div>
-              <div id="card-cost">Cost: ${json[i].cost}</div>
+            <div class="card-item" id="card-date">Date: ${getFormattedDate(
+              json[i].date
+            )}</div>
+              <div class="card-item" id="card-start-time">Start Time: ${getFormattedTime(
+                json[i].startTime
+              )}</div>
+              <div id="card-stop-time">Start Time: ${getFormattedTime(
+                json[i].stopTime
+              )}</div>
+              <div id="card-cost">Cost: $${json[i].cost}</div>
               <button class="cancel" id="${json[i].id}">Cancel Lesson</button>
             </div>
           </div>
