@@ -65,7 +65,7 @@ nav .material-symbols-outlined{
     margin-left: 10px;
 }
 a:hover{
-    background: whitesmoke;
+    color: #002642;
 }
 
 
@@ -152,7 +152,7 @@ li button{
 }
 
 li button:hover{
-    background: whitesmoke;
+    color: #002642 ;
     cursor: pointer;
 }
 #sign-out-btn:hover{
@@ -358,8 +358,39 @@ li button:hover{
     max-width: 800px;
     height: 600px;
     display: flex;
-    background:whitesmoke;
+    background:#E5DADA;
     box-shadow: 0 0 5px #999999 ;
+}
+.userTitle{
+  margin:15px;
+  color: #E5DADA;
+}
+.login-container label{
+  border:none
+}
+#change-email{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-password{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-instrument{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-email:hover{
+  color: #E5DADA;
+  background:#002642;;
+}
+#change-password:hover{
+  color: #E5DADA;
+  background:#002642;;
+}
+#change-instrument:hover{
+  color: #E5DADA;
+  background:#002642;;
 }
 .InstructorSettings-container{
     margin: 0 auto;
@@ -381,7 +412,7 @@ li button:hover{
 .signIn-col-left{
     width: 60%;
     clip-path: polygon(0 0,0% 200%,100% 0);
-    background: linear-gradient(#002642,#E59500);;
+    background: linear-gradient(#002642,#E5DADA);;
 }
 .signIn-col-right{
     flex-direction: column;
@@ -406,7 +437,7 @@ li button:hover{
     .signIn-col-right{
         padding:30px;
         padding-bottom: 10px;
-        background: whitesmoke;
+        background: #E5DADA;
     }
 }
 .login-text{
@@ -421,30 +452,7 @@ li button:hover{
     font-size: 33px;
     font-weight: 700;
 }
-.login-text p{
-    margin: 50px 0 20px 0;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 22px;
-}
-.loginLink{
-    margin-left: 5px;
-    display: inline-block;
-    padding: 10px 10px;
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 20px;
-    color: #ffffff;
-    outline: none;
-    border: 1px solid #ffffff;
-    box-shadow: inset 0 0 0 0 #ffffff;
-    transition: .5s;
-}
-.login-text .loginLink:hover{
-    color: #002642;
-    box-shadow: inset 150px 0 0 0 #ffffff;
-}
+
 
 .login-form{
     position: relative;
@@ -490,7 +498,10 @@ li button:hover{
 
 }
 #delete-account{
+    margin-top: 10px;
+    width: 50%;
     font-size: 16px;
+    font-weight: 700;
     text-align: center;
     color: #002642;
     background: transparent;
@@ -504,5 +515,5 @@ li button:hover{
 
 #delete-account:hover{
     color: whitesmoke;
-    box-shadow: inset 250px 0 0 0 #002642;
+    box-shadow: inset 250px 0 0 0 #840032;
 }

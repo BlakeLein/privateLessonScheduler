@@ -18,7 +18,7 @@
       <nav>
         <ul>
           <li>
-            <a href="" class="logo">
+            <a href="/student/home" class="logo">
               <img src="../images/music icon.png" alt="" />
               <span class="nav-item"
                 >Musicly<br />
@@ -42,41 +42,54 @@
       </nav>
 
       <section class="studentSettings-container">
-        <h1>Welcome ${getUserName}!</h1>
-        <label
-          >Change Username / Email
-          <input type="text" id="change-user-input" />
-          <button id="change-email">Change</button></label
-        >
-        <label
-          >Change Password
-          <input type="text" id="change-password-input" />
-          <button id="change-password">Change</button></label
-        >
-        <label
-          >Change My Instrument
-          <select type="text" id="change-instrument-input">
-            <option value="" disabled selected hidden>
-              Select your Instrument
-            </option>
-          </select>
-          <button id="change-instrument">Change</button></label
-        >
-        <label
-          >Select your Instructor
-          <select id="change-instructor-input" required>
-            <option value="" disabled selected hidden>
-              Select your Instructor
-            </option>
-            <!-- Options to be appended to page from the js file -->
-            ${listOfInstructors.map(instructor => `
-            <option>${instructor.firstName} ${instructor.lastName}</option>
-            `).join('')}
-          </select>
-          <button id="change-instructor">Change</button></label
-        >
-        <button id="delete-account">Delete Account</button>
-      </section>
+        <h1 class ="userTitle">SETTINGS FOR ${getUserName}</h1>
+        <div class="login-container">
+          <div class="signIn-col-left">
+            <div class="login-text">
+              <h2>Settings</h2>
+              <br>
+              <h5>Change your account information here.</h5>
+              <br>
+              <h5>Making a change will log you out.</h5>
+            </div>
+          </div>
+            <div class="signIn-col-right">
+                <div class="login-form">
+                  <h2>New Information</h2>
+                  <form id="form" action="">
+                    <label>Change Username / Email
+                      <input type="text" id="change-user-input">
+                      <button id="change-email">Change</button></label>
+                    <label>Change Password
+                      <input type="text" id="change-password-input">
+                      <button id="change-password">Change</button></label>
+                    <label>Change My Instrument
+                      <select type="text" id="change-instrument-input">
+                      <option value="" disabled selected hidden>
+                      Select your Instrument
+                      </option>
+                      </select>
+                <button id="change-instrument">Change</button></label>
+                    <label
+                    >Select your Instructor
+                    <select id="change-instructor-input" required>
+                      <option value="" disabled selected hidden>
+                        Select your Instructor
+                      </option>
+                      <!-- Options to be appended to page from the js file -->
+                      ${listOfInstructors.map(instructor => `
+                        <option>${instructor.firstName} ${instructor.lastName}</option>
+                        `).join('')}
+                      </select>
+                      <button id="change-instructor">Change</button></label
+                      >
+                      <button id="delete-account">Delete Account</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </section>
     </div>
   </body>
-</html>
+  </html>
+  

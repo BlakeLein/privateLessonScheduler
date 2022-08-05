@@ -65,7 +65,7 @@ nav .material-symbols-outlined{
     margin-left: 10px;
 }
 a:hover{
-    background: whitesmoke;
+    color: #840032;
 }
 
 
@@ -76,22 +76,7 @@ a:hover{
     padding: 20px;
     width: 90%;
 }
-.main-area{
-    display: flex;
-    width: 100%;
-}
 
-.main-top{
-    display: flex;
-    margin-top: 20px;
-}
-.main-top i{
-    position: absolute;
-    right: 0;
-    margin: 10px 30px;
-    color: rgb(11, 109, 109);
-    cursor:pointer
-}
 #sample-card{
     width: 100%;
     margin: 10px;
@@ -169,7 +154,7 @@ li button{
 }
 
 li button:hover{
-    background: whitesmoke;
+    color: #840032;
     cursor: pointer;
 }
 #sign-out-btn:hover{
@@ -190,3 +175,182 @@ li button:hover{
     margin: 5px;
   }
   
+  /* SETTINGS STUFF */
+
+  .login-container{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 675px;
+    display: flex;
+    background:#E5DADA;
+    box-shadow: 0 0 5px #999999 ;
+}
+.userTitle{
+  margin:15px;
+  color: #E5DADA;
+}
+
+.login-container label{
+  border:none
+}
+#change-email{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-password{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-instrument{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-instructor{
+  border-radius: 15px;
+  transition: .5s;
+}
+#change-instructor:hover{
+    background:#840032;
+    color:whitesmoke;
+}
+#change-email:hover{
+  background:#840032;
+  color:whitesmoke;
+}
+#change-password:hover{
+  background:#840032;
+  color:whitesmoke;
+}
+#change-instrument:hover{
+  background:#840032;
+  color:whitesmoke;
+}
+.studentSettings-container{
+    margin: 0 auto;
+    padding: 10px;
+    padding-bottom: 15px;
+    width: 100%;
+    max-width: 1140px;
+    min-height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.signIn-col-left,
+.signIn-col-right{
+    padding:30px;
+    display: flex;
+}
+.signIn-col-left{
+    width: 60%;
+    clip-path: polygon(0 0,0% 200%,100% 0);
+    background: linear-gradient(#840032,#E5DADA);;
+}
+.signIn-col-right{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 30px;
+    width: 50%;
+    margin-left: -10px;
+}
+
+.login-text{
+    font-size: 22px;
+    position: relative;
+    width: 100%;
+    color: whitesmoke;
+}
+
+.login-text h2{
+    margin: 0 0 15px 0;
+    font-size: 33px;
+    font-weight: 700;
+}
+
+
+.login-form{
+    position: relative;
+    width: 100%;
+}
+.login-form h2{
+    margin: 0 0 15px 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+.login-form label{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 10px 0;
+    text-align: left;
+    color: #666666;
+    font-size: 18px;
+}
+.login-form input{
+    margin: 10px 10px 10px 0;
+    text-align: left;
+    color: #666666;
+    font-size: 15px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    outline:none;
+    border: 1px solid whitesmoke;
+    border-radius: 30px;
+}
+.login-form select{
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    outline:none;
+    border: 1px solid whitesmoke;
+    border-radius: 30px;
+}
+
+.login-form input:focus{
+    border-color: #002642;
+    
+}
+#delete-account{
+    margin-top: 10px;
+    width: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: #002642;
+    background: transparent;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid #002642;
+    box-shadow: inset 0 0 0 0 #002642;
+    transition: .5s;
+}
+
+#delete-account:hover{
+    color: whitesmoke;
+    box-shadow: inset 250px 0 0 0 #002642;
+}
+
+@media(max-width:600px){
+.login-container{
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .signIn-col-left,
+    .signIn-col-right{
+    width: 100%;
+    margin:0;
+    clip-path:none
+}
+    .signIn-col-right{
+        padding:30px;
+        padding-bottom: 10px;
+        background: #E5DADA;
+    }
+}
