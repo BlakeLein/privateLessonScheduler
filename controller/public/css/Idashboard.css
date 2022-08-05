@@ -78,7 +78,7 @@ a:hover{
 
 #sample-card {
   max-width: 350px;
-  max-height: 150px;
+  height: auto;
   margin: 10px;
   background: #E5DADA;
   text-align: center;
@@ -86,10 +86,14 @@ a:hover{
   padding: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
-
 #card-title {
   text-align: center;
   border-bottom: solid 1px black;
+
+}
+#card-date{
+  font-weight: 800;
+  color: #840032;
 }
 
 .card h3 {
@@ -163,6 +167,9 @@ li button:hover{
   grid-template-columns: repeat(auto-fit, minmax(100px, 350px));
   grid-gap: 20px;
   padding: 20px;
+}
+.main-container h1{
+  color: #E5DADA;
 }
 
 /* Modal Styles for Create a Lesson Feature*/
@@ -536,4 +543,37 @@ li button:hover{
     #modal-title{
       font-size: 15px;
     }
+}
+
+
+@media(max-height:950px){
+  .userTitle{
+      font-size: 20px;
+      margin: 10px;
+  }
+  .studentSettings-container{
+      justify-content:initial
+      }
+  .login-container{
+          flex-direction: column;
+          box-shadow: none;
+      }
+  
+  .signIn-col-left,
+  .signIn-col-right{
+  width: 100%;
+  margin:0;
+  clip-path:none;
+  padding:10px;
+  }
+  .signIn-col-left{
+      background: #002642;
+  }
+  .signIn-col-right h2{
+      display: none;
+  }
+  .login-form input{
+      margin: 5px 10px;
+      height: 25px;
+  }
 }
